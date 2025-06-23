@@ -1,1 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Urbanist", sans-serif;
+  background-color: #171717;
+}
