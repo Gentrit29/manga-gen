@@ -1,5 +1,11 @@
+import MangaSlider from "../components/MangaSlider";
+
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <MangaSlider />
+    </>
+  );
 }
 
 export default Home;
