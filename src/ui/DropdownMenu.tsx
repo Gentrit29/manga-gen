@@ -1,10 +1,13 @@
 import { NavLink } from "react-router";
 
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 function DropdownMenu() {
   return (
     <li className="group relative">
-      <button className="transition-colors duration-300 hover:text-green-500">
+      <button className="flex cursor-pointer items-center space-x-1 transition-colors duration-300 hover:text-green-500">
         Manga
+        <MdKeyboardArrowDown className="h-6 w-6" />
       </button>
       <div className="absolute hidden w-60 space-y-2 bg-neutral-800 group-hover:block">
         <div className="px-3 py-2">
