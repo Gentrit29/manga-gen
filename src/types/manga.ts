@@ -24,7 +24,7 @@ export type Genre = {
 
 export type Manga = {
   mal_id: number;
-  url?: string;
+  url: string;
   images: Images;
   title: string;
   title_japanese: string;
@@ -41,3 +41,16 @@ export type Manga = {
   authors: Author[];
   genres: Genre[];
 };
+
+export type MangaSlide = Pick<
+  Manga,
+  | "mal_id"
+  | "images"
+  | "title"
+  | "title_japanese"
+  | "synopsis"
+  | "rank"
+  | "score"
+  | "scored_by"
+  | "favorites"
+>;

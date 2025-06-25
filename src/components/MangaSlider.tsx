@@ -5,7 +5,7 @@ import { FaHeart, FaStar } from "react-icons/fa";
 
 import { useTop5Manga } from "../hooks/useTop5Manga";
 
-import { Link } from "react-router";
+import type { MangaSlide } from "../types/manga";
 
 function MangaSlider() {
   const { isLoading, top5Manga } = useTop5Manga();
@@ -22,7 +22,7 @@ function MangaSlider() {
         delay: 6000,
       }}
     >
-      {top5Manga.map((manga) => (
+      {top5Manga.map((manga: MangaSlide) => (
         <SwiperSlide key={manga.mal_id}>
           <div className="relative overflow-hidden">
             <div
