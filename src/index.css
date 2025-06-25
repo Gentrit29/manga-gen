@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "swiper/css/bundle";
+
 html {
   scroll-behavior: smooth;
 }
@@ -7,4 +9,43 @@ html {
 body {
   font-family: "Urbanist", sans-serif;
   background-color: #171717;
+}
+
+/*swiper style */
+.swiper-button-prev,
+.swiper-button-next {
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.3s ease;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #e5e7eb;
+}
+
+.swiper-pagination-bullet {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 100%;
+  background-color: rgba(74, 222, 128, 0.4);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet:hover {
+  background-color: rgba(74, 222, 128, 0.8);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #22c55e; /* green-500 */
+  transform: scale(1.1);
 }
