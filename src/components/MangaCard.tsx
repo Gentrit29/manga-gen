@@ -17,9 +17,16 @@ function MangaCard({ manga, index }: MangaCardProps) {
         />
         <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute inset-3 flex flex-col justify-between">
-          <h3 className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
-            #{index + 1}
-          </h3>
+          <div className="flex justify-between">
+            <h3 className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
+              #{index + 1}
+            </h3>
+            {manga.genres.some((g) => g.name === "Erotica") && (
+              <h3 className="w-fit rounded-lg bg-gradient-to-r from-rose-500/70 to-pink-500/70 px-1 py-2 text-lg font-semibold text-white">
+                16+
+              </h3>
+            )}
+          </div>
           <h3 className="font-light text-white">{manga.title}</h3>
         </div>
         <div className="absolute inset-0 z-10 hidden h-full rounded-lg bg-neutral-900/90 p-2 text-white shadow-xl transition-all duration-300 group-hover:block">
