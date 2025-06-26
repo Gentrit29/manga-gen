@@ -5,11 +5,12 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
 import Top from "./pages/Top";
+import Detail from "./pages/Detail";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 60 * 3600,
     },
   },
 });
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/detail/:id" element={<Detail />} />
             <Route path="/top/:type" element={<Top />} />
           </Route>
         </Routes>
