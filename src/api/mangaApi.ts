@@ -13,3 +13,18 @@ export const getTop5Manga = async () => {
 
   return json.data;
 };
+
+export const getRandomMangas = async () => {
+  const res = await Promise.all(
+    Array.from({ length: 5 }).map(() =>
+      fetch(`${JIKAN_API_URL}/random/manga?sfw=true`).then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed fetching random mangas");
+        }
+        return res.json();
+      }),
+    ),
+  );
+
+  return res.map((result) => result.data);
+};
