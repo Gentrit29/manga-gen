@@ -28,3 +28,17 @@ export const getRandomMangas = async () => {
 
   return res.map((result) => result.data);
 };
+
+export const getTopManga = async (type: string) => {
+  const res = await fetch(`${JIKAN_API_URL}/top/manga?filter=${type}&sfw=true`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch top manga");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error("Failed to fetch data | no manga found ");
+  }
+
+  return json.data;
+};
