@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Top from "./pages/Top";
 import Detail from "./pages/Detail";
 import Genre from "./pages/Genre";
+import Genres from "./pages/Genres";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/genres" element={<Genres />} />
             <Route path="/genre/:id" element={<Genre />} />
             <Route path="/top/:type" element={<Top />} />
           </Route>
