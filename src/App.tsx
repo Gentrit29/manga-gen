@@ -6,6 +6,7 @@ import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
 import Top from "./pages/Top";
 import Detail from "./pages/Detail";
+import Genre from "./pages/Genre";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,6 +26,7 @@ function App() {
             <Route index element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/genre/:id" element={<Genre />} />
             <Route path="/top/:type" element={<Top />} />
           </Route>
         </Routes>
