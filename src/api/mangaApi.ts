@@ -42,3 +42,31 @@ export const getTopManga = async (type: string) => {
 
   return json.data;
 };
+
+export const getMangaGenres = async () => {
+  const res = await fetch(`${JIKAN_API_URL}/genres/manga?filter=genres`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch manga genres");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error("Failed to fetch data | no genres found ");
+  }
+
+  return json.data;
+};
+
+export const getAllMangaGenres = async () => {
+  const res = await fetch(`${JIKAN_API_URL}/genres/manga`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch manga genres");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error("Failed to fetch data | no genres found ");
+  }
+
+  return json.data;
+};
