@@ -1,5 +1,42 @@
+import { Link } from "react-router";
+
+import { useMangaGenres } from "../hooks/useMangaGenres";
+
+import type { Genre } from "../types/manga";
+
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+
 function MangaGenres() {
-  return <div>MangaGenres</div>;
+  const { isLoading, error, mangaGenres } = useMangaGenres();
+
+  if (isLoading) return null;
+  if (error) return null;
+
+  return (
+    <section className="mx-20 mt-15 space-y-10">
+      <div className="flex justify-center text-white">
+        <h1 className="text-2xl font-bold">Discover Manga by Genre!</h1>
+      </div>
+      <div className="mt-10 grid grid-cols-6 place-items-center gap-2 text-white">
+        {mangaGenres.map((genre: Genre) => (
+          <Link key={genre.mal_id} to={`/genre/${genre.mal_id}`}>
+            <div className="w-40 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500">
+              <span>{genre.name}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <div className="flex items-center justify-center">
+        <Link
+          to="/genres"
+          className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-lg font-bold text-gray-200 transition-all duration-300 hover:scale-105"
+        >
+          View All
+          <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
+        </Link>
+      </div>
+    </section>
+  );
 }
 
 export default MangaGenres;
