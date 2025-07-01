@@ -8,3 +8,7 @@ export const removeDuplicateGenresTag = (genres: Genre[]) => {
     return true;
   });
 };
+
+export function filterExplicitGenre(genre: Genre[], filter: string[]) {
+  return genre.filter((genre: Genre) => !filter.includes(genre.name));
+}
