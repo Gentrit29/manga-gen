@@ -70,3 +70,17 @@ export const getAllMangaGenres = async () => {
 
   return json.data;
 };
+
+export const getMangaSearch = async (query: string) => {
+  const res = await fetch(`${JIKAN_API_URL}/manga?q=${query}&sfw=true`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch manga by query");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error("Failed to fetch data | no manga found ");
+  }
+
+  return json.data;
+};
