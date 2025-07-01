@@ -3,7 +3,10 @@ import { Link } from "react-router";
 import { useAllMangaGenres } from "../hooks/useAllMangaGenres";
 
 import type { Genre } from "../types/manga";
-import { removeDuplicateGenresTag } from "../utils/helpers";
+import {
+  filterExplicitGenre,
+  removeDuplicateGenresTag,
+} from "../utils/helpers";
 
 function Genres() {
   const { isLoading, error, allMangaGenres } = useAllMangaGenres();
@@ -13,9 +16,7 @@ function Genres() {
 
   const filter = import.meta.env.VITE_EXPLICIT_FILTER;
 
-  const filterGenres: Genre[] = allMangaGenres.filter(
-    (genre: Genre) => !filter.includes(genre.name),
-  );
+  const filterGenres: Genre[] = filterExplicitGenre(allMangaGenres, filter);
 
   const uniqueGenres = removeDuplicateGenresTag(filterGenres);
 
