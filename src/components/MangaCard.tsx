@@ -10,7 +10,7 @@ type MangaCardProps = {
 function MangaCard({ manga, index }: MangaCardProps) {
   return (
     <Link to={`/detail/${manga.mal_id}`}>
-      <div className="group relative">
+      <div className="group relative w-full max-w-60">
         <img
           className="h-80 w-60 rounded-lg brightness-90"
           src={manga.images.webp.image_url}
