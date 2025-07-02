@@ -42,6 +42,12 @@ export type Manga = {
   genres: Genre[];
 };
 
+export type MangaRecommendation = {
+  entry: Pick<Manga, "mal_id" | "url" | "images" | "title">;
+  url: string;
+  votes: number;
+};
+
 export type MangaSlide = Pick<
   Manga,
   | "mal_id"
