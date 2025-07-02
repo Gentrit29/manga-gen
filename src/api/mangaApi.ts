@@ -100,3 +100,19 @@ export const getMangaFullById = async (id: number) => {
 
   return json.data;
 };
+
+export const getMangaRecommendations = async (id: number) => {
+  const res = await fetch(`${JIKAN_API_URL}/manga/${id}/recommendations`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch recommendations by id");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error(
+      `Failed to fetch recommendations | recommendations id: ${id}`,
+    );
+  }
+
+  return json.data;
+};
