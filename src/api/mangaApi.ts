@@ -86,3 +86,17 @@ export const getMangaSearch = async (query: string) => {
 
   return json.data;
 };
+
+export const getMangaFullById = async (id: number) => {
+  const res = await fetch(`${JIKAN_API_URL}/manga/${id}/full`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch manga by id");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error(`Failed to fetch data | manga id: ${id}`);
+  }
+
+  return json.data;
+};
