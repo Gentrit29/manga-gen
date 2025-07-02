@@ -72,7 +72,9 @@ export const getAllMangaGenres = async () => {
 };
 
 export const getMangaSearch = async (query: string) => {
-  const res = await fetch(`${JIKAN_API_URL}/manga?q=${query}&sfw=true`);
+  const res = await fetch(
+    `${JIKAN_API_URL}/manga?q=${query}&sfw&genres_exclude=49,65`,
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch manga by query");
   }
