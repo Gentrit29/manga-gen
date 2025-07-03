@@ -94,7 +94,7 @@ export const getMangaFullById = async (id: number) => {
   }
 
   const json = await res.json();
-  if (!json?.data || json.data.length === 0) {
+  if (!json?.data) {
     throw new Error(`Failed to fetch data | manga id: ${id}`);
   }
 
@@ -108,11 +108,6 @@ export const getMangaRecommendations = async (id: number) => {
   }
 
   const json = await res.json();
-  if (!json?.data || json.data.length === 0) {
-    throw new Error(
-      `Failed to fetch recommendations | recommendations id: ${id}`,
-    );
-  }
 
-  return json.data;
+  return json?.data ?? [];
 };
