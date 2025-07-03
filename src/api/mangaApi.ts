@@ -29,13 +29,13 @@ export const getRandomMangas = async () => {
   return res.map((result) => result.data);
 };
 
-export const getTopManga = async (type: string) => {
+export const getTopManga = async (type: string, page: number = 1) => {
   //type "manga" is not a valid filter for he jikan api
   //but I want to keep the /top/manga url, so I made a conditional fetch
   const url =
     type && type !== "manga"
-      ? `${JIKAN_API_URL}/top/manga?filter=${type}&sfw=true`
-      : `${JIKAN_API_URL}/top/manga?sfw=true`;
+      ? `${JIKAN_API_URL}/top/manga?filter=${type}&page=${page}&sfw=true`
+      : `${JIKAN_API_URL}/top/manga?sfw=true&page=${page}`;
 
   const res = await fetch(url);
 
@@ -48,7 +48,7 @@ export const getTopManga = async (type: string) => {
     throw new Error("Failed to fetch data | no manga found ");
   }
 
-  return json.data;
+  return { data: json.data, pagination: json.pagination };
 };
 
 export const getMangaGenres = async () => {
