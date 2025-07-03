@@ -9,7 +9,7 @@ function DropdownMenu() {
         Manga
         <MdKeyboardArrowDown className="h-6 w-6" />
       </button>
-      <div className="absolute hidden w-60 space-y-2 bg-neutral-800 group-hover:block">
+      <div className="absolute z-20 hidden w-60 space-y-2 bg-neutral-800 group-hover:block">
         <div className="px-3 py-2">
           <NavLink
             className="block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"

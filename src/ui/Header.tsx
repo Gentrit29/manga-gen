@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <>
-      <header className="z-10 h-20 bg-neutral-800">
+      <header className="z-20 h-20 bg-neutral-800">
         <nav className="flex h-full items-center space-x-10 px-20 text-white">
           <h1 className="cursor-pointer text-2xl font-bold">Manga GEN</h1>
           <ul className="flex space-x-4 text-lg font-light">
