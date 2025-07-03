@@ -19,7 +19,7 @@ const tabs = [
 function MangaTop() {
   const [selectedTab, setSelectedTab] = useState("");
 
-  const { isLoading, error, topManga } = useTopManga(selectedTab);
+  const { isLoading, error, topManga } = useTopManga(selectedTab, 1);
 
   if (isLoading) return null;
   if (error) return null;
@@ -48,7 +48,7 @@ function MangaTop() {
         </div>
       </div>
       <div className="grid grid-cols-5 gap-4">
-        {topManga?.map((manga: Manga, idx: number) => (
+        {topManga?.data.map((manga: Manga, idx: number) => (
           <MangaCard key={manga.mal_id} manga={manga} index={idx} />
         ))}
       </div>
