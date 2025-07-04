@@ -30,21 +30,24 @@ const NAV_LABELS: Record<string, { label: string; desc: string }> = {
 };
 
 function Top() {
-  const { type } = useParams();
+  const { category } = useParams();
   const [nextPage, setNextPage] = useState(1);
 
   useEffect(() => {
     setNextPage(1);
-  }, [type]);
+  }, [category]);
 
-  const { isLoading, error, topManga } = useTopManga(type || "manga", nextPage);
+  const { isLoading, error, topManga } = useTopManga(
+    category || "manga",
+    nextPage,
+  );
 
   if (isLoading) return null;
   if (error) return null;
 
   const TOP_LABEL =
-    type && NAV_LABELS[type]
-      ? NAV_LABELS[type]
+    category && NAV_LABELS[category]
+      ? NAV_LABELS[category]
       : {
           label: "Top Manga",
           desc: "The highest ranked manga titles right now.",

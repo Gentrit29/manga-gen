@@ -29,7 +29,7 @@ function App() {
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/genres" element={<Genres />} />
             <Route path="/genre/:id" element={<Genre />} />
-            <Route path="/top/:type" element={<Top />} />
+            <Route path="/top/:category" element={<Top />} />
           </Route>
         </Routes>
       </BrowserRouter>

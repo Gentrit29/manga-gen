@@ -29,12 +29,12 @@ export const getRandomMangas = async () => {
   return res.map((result) => result.data);
 };
 
-export const getTopManga = async (type: string, page: number = 1) => {
-  //type "manga" is not a valid filter for he jikan api
+export const getTopManga = async (category: string, page: number = 1) => {
+  //category "manga" is not a valid filter for he jikan api
   //but I want to keep the /top/manga url, so I made a conditional fetch
   const url =
-    type && type !== "manga"
-      ? `${JIKAN_API_URL}/top/manga?filter=${type}&page=${page}&sfw=true`
+    category && category !== "manga"
+      ? `${JIKAN_API_URL}/top/manga?filter=${category}&page=${page}&sfw=true`
       : `${JIKAN_API_URL}/top/manga?sfw=true&page=${page}`;
 
   const res = await fetch(url);
