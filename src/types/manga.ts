@@ -60,3 +60,12 @@ export type MangaSlide = Pick<
   | "scored_by"
   | "favorites"
 >;
+
+export type MangaCharacter = {
+  role: string;
+  character: {
+    mal_id: number;
+    images: Images;
+    name: string;
+  };
+};
