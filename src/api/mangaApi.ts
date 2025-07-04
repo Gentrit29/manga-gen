@@ -119,3 +119,14 @@ export const getMangaRecommendations = async (id: number) => {
 
   return json?.data ?? [];
 };
+
+export const getMangaCharacters = async (id: number) => {
+  const res = await fetch(`${JIKAN_API_URL}/manga/${id}/characters`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch characters by id");
+  }
+
+  const json = await res.json();
+
+  return json?.data ?? [];
+};
