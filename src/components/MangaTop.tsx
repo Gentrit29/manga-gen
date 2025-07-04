@@ -8,8 +8,10 @@ import type { Manga } from "../types/manga";
 
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
+import { Link } from "react-router";
+
 const tabs = [
-  { label: "All", value: "" },
+  { label: "All", value: "manga" },
   { label: "Top Publishing", value: "publishing" },
   { label: "Top Upcoming", value: "upcoming" },
   { label: "Most Popular", value: "bypopularity" },
@@ -17,7 +19,7 @@ const tabs = [
 ];
 
 function MangaTop() {
-  const [selectedTab, setSelectedTab] = useState("");
+  const [selectedTab, setSelectedTab] = useState("manga");
 
   const { isLoading, error, topManga } = useTopManga(selectedTab, 1);
 
@@ -53,12 +55,13 @@ function MangaTop() {
         ))}
       </div>
       <div className="flex items-center justify-center">
-        <div className="flex w-fit rounded-sm bg-linear-to-r from-green-500 to-emerald-500 transition-all duration-300 hover:scale-105">
-          <button className="flex cursor-pointer items-center px-4 py-1 text-lg font-bold text-gray-200">
-            View More
-            <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
-          </button>
-        </div>
+        <Link
+          to={`/top/${selectedTab}`}
+          className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-lg font-bold text-gray-200 transition-all duration-300 hover:scale-105"
+        >
+          View More
+          <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
+        </Link>
       </div>
     </section>
   );
