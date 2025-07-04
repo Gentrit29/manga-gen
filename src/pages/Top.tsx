@@ -24,14 +24,10 @@ function Top() {
     setNextPage(1);
   }, [category]);
 
-  const { isLoading, error, topManga } = useTopManga(
-    category || "manga",
-    nextPage,
-    selectedTab,
-  );
+  const { topManga } = useTopManga(category || "manga", nextPage, selectedTab);
 
-  if (isLoading) return null;
-  if (error) return null;
+  // if (isLoading) return null;
+  // if (error) return null;
 
   const NAV_LABELS: Record<string, { label: string; desc: string }> = {
     manga: {
@@ -40,19 +36,19 @@ function Top() {
     },
     publishing: {
       label: "Top Publishing",
-      desc: "Currently ongoing manga series",
+      desc: `Currently ongoing ${selectedTab} series`,
     },
     upcoming: {
       label: "Top Upcoming",
-      desc: "Most anticipated manga releases coming soon",
+      desc: `Most anticipated ${selectedTab} releases coming soon`,
     },
     bypopularity: {
       label: "Most Popular",
-      desc: "Manga that have captivated readers over time",
+      desc: `${selectedTab} that have captivated readers over time`,
     },
     favorite: {
       label: "Most Favorited",
-      desc: "Fan-favorite manga picks of all time",
+      desc: `Fan-favorite ${selectedTab} picks of all time`,
     },
   };
 
@@ -89,11 +85,17 @@ function Top() {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-5 gap-4">
-          {topManga?.data.map((manga: Manga, idx: number) => (
-            <MangaCard key={manga.mal_id} manga={manga} index={idx} />
-          ))}
-        </div>
+        {topManga?.data && topManga.data.length > 0 ? (
+          <div className="grid grid-cols-5 gap-4">
+            {topManga?.data.map((manga: Manga, idx: number) => (
+              <MangaCard key={manga.mal_id} manga={manga} index={idx} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-lg text-white">
+            No results to display
+          </p>
+        )}
         {topManga?.pagination && topManga?.pagination.last_visible_page > 1 && (
           <Pagination
             currentPage={topManga?.pagination.current_page}
