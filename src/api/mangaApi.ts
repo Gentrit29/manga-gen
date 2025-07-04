@@ -134,3 +134,19 @@ export const getMangaCharacters = async (id: number) => {
 
   return json?.data ?? [];
 };
+
+export const getMangaSearchByGenre = async (genres: number, page = 1) => {
+  const res = await fetch(
+    `${JIKAN_API_URL}/manga?genres=${genres}&sfw&page=${page}`,
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch manga by genre");
+  }
+
+  const json = await res.json();
+  if (!json?.data || json.data.length === 0) {
+    throw new Error("Failed to fetch data | no manga found ");
+  }
+
+  return { data: json.data, pagination: json.pagination };
+};
