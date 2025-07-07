@@ -2,7 +2,7 @@ import MangaCard from "./MangaCard";
 
 import { useRandomManga } from "../hooks/useRandomManga";
 
-import type { Manga } from "../types/manga";
+import type { MangaData } from "../types/manga";
 
 function MangaRandom() {
   const { isLoading, error, randomManga } = useRandomManga();
@@ -16,7 +16,7 @@ function MangaRandom() {
         <h2 className="text-2xl font-bold text-white">Random Manga Picks</h2>
       </div>
       <div className="grid grid-cols-5 gap-4">
-        {randomManga?.map((manga: Manga, idx: number) => (
+        {randomManga?.map((manga: MangaData, idx: number) => (
           <MangaCard key={manga.mal_id} manga={manga} index={idx} />
         ))}
       </div>

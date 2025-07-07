@@ -1,12 +1,12 @@
 import { IoSearch } from "react-icons/io5";
 import { Link } from "react-router";
-import type { Manga } from "../types/manga";
+import type { MangaData } from "../types/manga";
 import { useEffect } from "react";
 
 type SearchModalProps = {
   query: string;
   setQuery: (query: string) => void;
-  mangaList: Manga[];
+  mangaList: MangaData[];
   isOpen: boolean;
   onClose: () => void;
 };
@@ -61,7 +61,7 @@ function SearchModal({
           )}
           <ul className="mt-4 max-h-[60vh] w-full overflow-y-auto border-t-1 border-white py-2">
             {mangaList && mangaList.length > 0 ? (
-              mangaList.map((manga: Manga) => (
+              mangaList.map((manga: MangaData) => (
                 <li key={manga.mal_id}>
                   <Link
                     to={`/detail/${manga.mal_id}`}
