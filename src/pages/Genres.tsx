@@ -5,6 +5,7 @@ import { useAllMangaGenres } from "../hooks/useAllMangaGenres";
 import type { Genre } from "../types/manga";
 import {
   filterExplicitGenre,
+  formatGenreNameForUrl,
   removeDuplicateGenresTag,
 } from "../utils/helpers";
 
@@ -28,7 +29,10 @@ function Genres() {
       <div className="mt-10 grid grid-cols-6 place-items-center gap-2 text-white">
         {uniqueGenres.map((genre: Genre) => (
           <div className="w-40 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500">
-            <Link key={genre.mal_id} to={`/genre/${genre.mal_id}`}>
+            <Link
+              key={genre.mal_id}
+              to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
+            >
               <span>{genre.name}</span>
             </Link>
           </div>

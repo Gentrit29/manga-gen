@@ -5,6 +5,7 @@ import { useMangaGenres } from "../hooks/useMangaGenres";
 import type { Genre } from "../types/manga";
 
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { formatGenreNameForUrl } from "../utils/helpers";
 
 function MangaGenres() {
   const { isLoading, error, mangaGenres } = useMangaGenres();
@@ -19,7 +20,10 @@ function MangaGenres() {
       </div>
       <div className="mt-10 grid grid-cols-6 place-items-center gap-2 text-white">
         {mangaGenres.map((genre: Genre) => (
-          <Link key={genre.mal_id} to={`/genre/${genre.mal_id}`}>
+          <Link
+            key={genre.mal_id}
+            to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
+          >
             <div className="w-40 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500">
               <span>{genre.name}</span>
             </div>
