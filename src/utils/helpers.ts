@@ -12,14 +12,3 @@ export const removeDuplicateGenresTag = (genres: Genre[]) => {
 export function filterExplicitGenre(genre: Genre[], filter: string[]) {
   return genre.filter((genre: Genre) => !filter.includes(genre.name));
 }
-
-export function formatGenreNameForUrl(name: string) {
-  return name.toLowerCase().replace(/\s+/g, "-");
-}
-
-export function formatGenreNameForDisplay(name: string) {
-  return name
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
