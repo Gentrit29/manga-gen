@@ -3,7 +3,7 @@ import { useMangaSearchByGenre } from "../hooks/useMangaSearchByGenre";
 
 import { useState } from "react";
 import Pagination from "../ui/Pagination";
-import { formatGenreNameForDisplay } from "../utils/helpers";
+import { formatGenreNameForDisplay } from "../utils/formatters";
 import MangaGrid from "../ui/MangaGrid";
 
 function Genre() {
@@ -27,7 +27,7 @@ function Genre() {
         </h2>
       </div>
       {mangaList?.data && mangaList.data.length > 0 ? (
-        <MangaGrid manga={mangaList} />
+        <MangaGrid manga={mangaList.data} />
       ) : (
         <p className="text-center text-lg text-white">No results to display</p>
       )}
