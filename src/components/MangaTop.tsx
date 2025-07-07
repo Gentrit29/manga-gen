@@ -7,6 +7,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router";
 
 import MangaGrid from "../ui/MangaGrid";
+import MangaTabs from "../ui/MangaTabs";
 
 const tabs = [
   { label: "All", value: "manga" },
@@ -31,23 +32,15 @@ function MangaTop() {
           <div className="h-10 w-1.5 rounded-sm bg-green-500"></div>
           <h2 className="text-2xl font-bold text-white">Top Manga</h2>
         </div>
-        <div className="mt-4 flex space-x-6 border-b-1 border-gray-200 text-xl text-white">
-          {tabs.map((tab) => (
-            <button
-              className={`pb-2 transition-all ${
-                selectedTab === tab.value
-                  ? "border-b-1 border-gray-200 text-white"
-                  : "hover: border-gray-200 text-gray-400 hover:border-b-1 hover:text-white"
-              }`}
-              key={tab.value}
-              onClick={() => setSelectedTab(tab.value)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <MangaTabs
+          tabs={tabs}
+          selectedTab={selectedTab}
+          onSelectTab={setSelectedTab}
+        />
       </div>
-      {topManga && <MangaGrid manga={topManga} />}
+      {topManga?.data && topManga.data.length > 0 && (
+        <MangaGrid manga={topManga.data} />
+      )}
       <div className="flex items-center justify-center">
         <Link
           to={`/top/${selectedTab}`}
