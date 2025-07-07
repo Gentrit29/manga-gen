@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
-import type { Manga } from "../types/manga";
+import type { MangaData } from "../types/manga";
 
 type MangaCardProps = {
-  manga: Manga;
+  manga: MangaData;
   index: number;
 };
 
