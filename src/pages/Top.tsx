@@ -1,10 +1,11 @@
 import { useParams } from "react-router";
 import { useTopManga } from "../hooks/useTopManga";
 import TopHeader from "../components/TopHeader";
-import MangaCard from "../components/MangaCard";
-import type { Manga } from "../types/manga";
 import Pagination from "../ui/Pagination";
 import { useEffect, useState } from "react";
+import MangaGrid from "../ui/MangaGrid";
+import MangaTabs from "../ui/MangaTabs";
+import { getTopLabel } from "../utils/labels";
 
 const tabs = [
   { label: "Manga", value: "manga" },
@@ -29,36 +30,7 @@ function Top() {
   // if (isLoading) return null;
   // if (error) return null;
 
-  const NAV_LABELS: Record<string, { label: string; desc: string }> = {
-    manga: {
-      label: `Top ${selectedTab.charAt(0).toUpperCase() + selectedTab.slice(1).toLowerCase()}`,
-      desc: `The highest-ranked ${selectedTab} of all time`,
-    },
-    publishing: {
-      label: "Top Publishing",
-      desc: `Currently ongoing ${selectedTab} series`,
-    },
-    upcoming: {
-      label: "Top Upcoming",
-      desc: `Most anticipated ${selectedTab} releases coming soon`,
-    },
-    bypopularity: {
-      label: "Most Popular",
-      desc: `${selectedTab} that have captivated readers over time`,
-    },
-    favorite: {
-      label: "Most Favorited",
-      desc: `Fan-favorite ${selectedTab} picks of all time`,
-    },
-  };
-
-  const TOP_LABEL =
-    category && NAV_LABELS[category]
-      ? NAV_LABELS[category]
-      : {
-          label: "Top Manga",
-          desc: "The highest ranked manga titles right now.",
-        };
+  const TOP_LABEL = getTopLabel(category, selectedTab);
 
   return (
     <div className="mx-20 my-15 space-y-20">
@@ -70,27 +42,13 @@ function Top() {
         }
       />
       <div className="space-y-6">
-        <div className="mt-4 flex space-x-6 border-b-1 border-gray-200 text-xl text-white">
-          {tabs.map((tab) => (
-            <button
-              className={`pb-2 transition-all ${
-                selectedTab === tab.value
-                  ? "border-b-1 border-gray-200 text-white"
-                  : "hover: border-gray-200 text-gray-400 hover:border-b-1 hover:text-white"
-              }`}
-              key={tab.value}
-              onClick={() => setSelectedTab(tab.value)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <MangaTabs
+          tabs={tabs}
+          selectedTab={selectedTab}
+          onSelectTab={setSelectedTab}
+        />
         {topManga?.data && topManga.data.length > 0 ? (
-          <div className="grid grid-cols-5 gap-4">
-            {topManga?.data.map((manga: Manga, idx: number) => (
-              <MangaCard key={manga.mal_id} manga={manga} index={idx} />
-            ))}
-          </div>
+          <MangaGrid manga={topManga.data} />
         ) : (
           <p className="text-center text-lg text-white">
             No results to display
