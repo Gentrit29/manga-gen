@@ -1,11 +1,10 @@
 import { useLocation, useParams } from "react-router";
 import { useMangaSearchByGenre } from "../hooks/useMangaSearchByGenre";
-import MangaCard from "../components/MangaCard";
-import type { Manga } from "../types/manga";
 
 import { useState } from "react";
 import Pagination from "../ui/Pagination";
 import { formatGenreNameForDisplay } from "../utils/helpers";
+import MangaGrid from "../ui/MangaGrid";
 
 function Genre() {
   const { id } = useParams();
@@ -28,11 +27,7 @@ function Genre() {
         </h2>
       </div>
       {mangaList?.data && mangaList.data.length > 0 ? (
-        <div className="grid grid-cols-5 gap-4">
-          {mangaList?.data.map((manga: Manga, idx: number) => (
-            <MangaCard key={manga.mal_id} manga={manga} index={idx} />
-          ))}
-        </div>
+        <MangaGrid manga={mangaList} />
       ) : (
         <p className="text-center text-lg text-white">No results to display</p>
       )}
