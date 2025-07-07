@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-import MangaCard from "./MangaCard";
-
 import { useTopManga } from "../hooks/useTopManga";
-
-import type { Manga } from "../types/manga";
 
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 import { Link } from "react-router";
+
+import MangaGrid from "../ui/MangaGrid";
 
 const tabs = [
   { label: "All", value: "manga" },
@@ -49,11 +47,7 @@ function MangaTop() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-4">
-        {topManga?.data.map((manga: Manga, idx: number) => (
-          <MangaCard key={manga.mal_id} manga={manga} index={idx} />
-        ))}
-      </div>
+      {topManga && <MangaGrid manga={topManga} />}
       <div className="flex items-center justify-center">
         <Link
           to={`/top/${selectedTab}`}
