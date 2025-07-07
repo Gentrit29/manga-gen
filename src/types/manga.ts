@@ -22,7 +22,7 @@ export type Genre = {
   url: string;
 };
 
-export type Manga = {
+export type MangaData = {
   mal_id: number;
   url: string;
   images: Images;
@@ -42,14 +42,25 @@ export type Manga = {
   genres: Genre[];
 };
 
+export type MangaPagination = {
+  last_visible_page: number;
+  has_next_page: boolean;
+  current_page: number;
+};
+
+export type Manga = {
+  data: MangaData[];
+  pagination: MangaPagination;
+};
+
 export type MangaRecommendation = {
-  entry: Pick<Manga, "mal_id" | "url" | "images" | "title">;
+  entry: Pick<MangaData, "mal_id" | "url" | "images" | "title">;
   url: string;
   votes: number;
 };
 
 export type MangaSlide = Pick<
-  Manga,
+  MangaData,
   | "mal_id"
   | "images"
   | "title"
