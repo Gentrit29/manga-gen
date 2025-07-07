@@ -29,7 +29,7 @@ function MangaCard({ manga, index }: MangaCardProps) {
           </div>
           <h3 className="font-light text-white">{manga.title}</h3>
         </div>
-        <div className="absolute inset-0 z-10 hidden h-full rounded-lg bg-neutral-900/90 p-2 text-white shadow-xl transition-all duration-300 group-hover:block">
+        <div className="absolute inset-0 z-10 h-full rounded-lg bg-neutral-900/90 p-2 text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
           <h3 className="line-clamp-2 text-lg font-semibold">{manga.title}</h3>
           <div className="mt-2 mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-400">
             <span className="rounded bg-neutral-800 px-2 py-1">
