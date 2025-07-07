@@ -5,7 +5,7 @@ import { useMangaGenres } from "../hooks/useMangaGenres";
 import type { Genre } from "../types/manga";
 
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { formatGenreNameForUrl } from "../utils/helpers";
+import { formatGenreNameForUrl } from "../utils/formatters";
 
 function MangaGenres() {
   const { isLoading, error, mangaGenres } = useMangaGenres();

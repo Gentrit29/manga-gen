@@ -5,9 +5,10 @@ import { useAllMangaGenres } from "../hooks/useAllMangaGenres";
 import type { Genre } from "../types/manga";
 import {
   filterExplicitGenre,
-  formatGenreNameForUrl,
   removeDuplicateGenresTag,
 } from "../utils/helpers";
+
+import { formatGenreNameForUrl } from "../utils/formatters";
 
 function Genres() {
   const { isLoading, error, allMangaGenres } = useAllMangaGenres();
