@@ -26,9 +26,9 @@ function MangaTop() {
   if (error) return null;
 
   return (
-    <section className="mx-20 mt-15 mb-20 space-y-4">
+    <section className="mx-5 mt-15 space-y-4 lg:mx-20 xl:mx-50">
       <div className="flex flex-col">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 md:space-x-4">
           <div className="h-10 w-1.5 rounded-sm bg-green-500"></div>
           <h2 className="text-2xl font-bold text-white">Top Manga</h2>
         </div>
@@ -44,7 +44,7 @@ function MangaTop() {
       <div className="flex items-center justify-center">
         <Link
           to={`/top/${selectedTab}`}
-          className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-lg font-bold text-gray-200 transition-all duration-300 hover:scale-105"
+          className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:text-lg"
         >
           View More
           <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />

@@ -24,32 +24,37 @@ function MangaSlider() {
     >
       {top5Manga.map((manga: MangaSlide) => (
         <SwiperSlide key={manga.mal_id}>
-          <div className="relative overflow-hidden">
+          <div className="relative h-[500px] max-h-[500px] overflow-hidden">
             <div
-              className="absolute inset-0 scale-100 bg-cover bg-center blur-sm brightness-50"
+              className="absolute inset-0 scale-100 bg-cover bg-center blur-xs brightness-50 sm:blur-sm"
               style={{ backgroundImage: `url(${manga.images.webp.image_url})` }}
             />
-            <div className="relative z-10 flex flex-col px-20 py-10">
+            <div className="relative z-10 flex h-full flex-col justify-center px-5 py-10 lg:px-20 xl:px-50">
               <div className="flex h-10 w-fit items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4">
-                <h3 className="text-lg font-light text-white">
+                <h3 className="text-base text-white md:text-lg">
                   Ranked #{manga.rank} in Top Manga
                 </h3>
               </div>
-              <div className="mt-6">
-                <h1 className="text-3xl font-bold text-white">{manga.title}</h1>
-                <h2 className="text-xl font-light text-white">
+              <div className="mt-3 md:mt-6">
+                <h1 className="text-2xl font-bold text-white md:text-3xl">
+                  {manga.title}
+                </h1>
+                <h2 className="text-lg font-light text-white md:text-xl">
                   ({manga.title_japanese})
                 </h2>
               </div>
-              <div className="mt-8 max-w-lg">
-                <p className="line-clamp-3 text-lg text-gray-200">
+              <div className="mt-3 max-w-lg md:mt-8">
+                <p className="line-clamp-3 text-sm text-gray-200 md:text-lg">
                   {manga.synopsis}
                 </p>
-                <button className="text-lg font-bold text-green-400">
+                <Link
+                  to={`/detail/${manga.mal_id}`}
+                  className="text-sm font-bold text-green-400 md:text-lg"
+                >
                   Read More
-                </button>
+                </Link>
               </div>
-              <div className="mt-4 flex items-center space-x-1 text-lg font-light">
+              <div className="mt-4 flex items-center space-x-1 text-base font-light md:text-lg">
                 <FaStar className="text-yellow-500" />
                 <span className="text-gray-200">
                   {manga.score} ({manga.scored_by} ratings)
@@ -61,7 +66,7 @@ function MangaSlider() {
               </div>
               <Link
                 to={`/detail/${manga.mal_id}`}
-                className="mt-10 inline-block w-fit cursor-pointer rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-lg font-bold text-gray-200 transition-all duration-300 hover:scale-105"
+                className="mt-5 inline-block w-fit cursor-pointer rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:mt-10 md:text-lg"
               >
                 Show Detail
               </Link>
