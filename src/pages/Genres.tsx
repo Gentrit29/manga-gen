@@ -23,20 +23,21 @@ function Genres() {
   const uniqueGenres = removeDuplicateGenresTag(filterGenres);
 
   return (
-    <section className="mx-20 mt-15 space-y-10">
+    <section className="mx-5 mt-15 space-y-10 lg:mx-20 xl:mx-50">
       <div className="flex justify-center text-white">
-        <h1 className="text-2xl font-bold">Discover Manga by Genre!</h1>
+        <h1 className="text-center text-2xl font-bold">
+          Discover Manga by Genre!
+        </h1>
       </div>
-      <div className="mt-10 grid grid-cols-6 place-items-center gap-2 text-white">
+      <div className="mt-10 grid grid-cols-2 place-items-center gap-2 text-white sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {uniqueGenres.map((genre: Genre) => (
-          <div className="w-40 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500">
-            <Link
-              key={genre.mal_id}
-              to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
-            >
-              <span>{genre.name}</span>
-            </Link>
-          </div>
+          <Link
+            key={genre.mal_id}
+            to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
+            className="w-30 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500 md:w-40"
+          >
+            <span>{genre.name}</span>
+          </Link>
         ))}
       </div>
     </section>
