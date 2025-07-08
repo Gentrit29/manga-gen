@@ -10,7 +10,7 @@ function TopHeader({ label, params, desc }: TopHeaderProps) {
   return (
     <section className="relative h-[300px]">
       <div
-        className="absolute inset-0 bg-cover bg-center py-40 blur-xs brightness-60"
+        className="absolute inset-0 bg-cover bg-center blur-xs brightness-60"
         style={{
           backgroundImage: `url(${
             params?.images?.webp?.image_url ||
@@ -18,7 +18,7 @@ function TopHeader({ label, params, desc }: TopHeaderProps) {
           })`,
         }}
       />
-      <div className="relative flex h-full flex-col items-start justify-center space-y-2 px-10">
+      <div className="relative flex h-full flex-col items-center justify-center space-y-2 px-10 lg:items-start">
         <h1 className="text-center text-3xl font-bold text-white">{label}</h1>
         <p className="text-center text-xl font-light text-gray-200">{desc}</p>
       </div>
