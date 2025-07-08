@@ -13,15 +13,15 @@ function MangaHeader({ params }: MangaHeaderProps) {
         className="absolute inset-0 bg-cover bg-center blur-sm brightness-30"
         style={{ backgroundImage: `url(${params.images.webp.image_url})` }}
       />
-      <section className="relative z-10 mx-20 flex space-x-8">
+      <section className="relative z-10 flex flex-col items-center px-5 lg:items-start lg:px-20 xl:flex-row xl:space-x-8 xl:px-50">
         <img
           src={params.images.webp.image_url}
           alt={params.title}
-          className="h-80 w-60 rounded-lg"
+          className="h-70 w-60 rounded-lg md:h-80"
         />
-        <div className="flex flex-col space-y-2">
+        <div className="mt-4 flex flex-col space-y-2 xl:mt-0">
           <h1 className="text-4xl font-bold text-white">{params.title}</h1>
-          <div className="flex items-center space-x-2 text-base font-light text-white">
+          <div className="flex flex-wrap items-center gap-2 text-base font-light text-white">
             <span className="rounded bg-linear-to-r from-green-500 to-emerald-500 px-2 py-1">
               {params.type}
             </span>
@@ -51,34 +51,36 @@ function MangaHeader({ params }: MangaHeaderProps) {
               </div>
             )}
           </div>
-          <div className="mt-6 max-w-2xl">
-            <p className="text-white">{params.synopsis}</p>
+          <div className="mt-6 max-w-2xl xl:max-w-3xl">
+            <p className="text-sm text-white lg:text-base">{params.synopsis}</p>
           </div>
-          <div className="mt-6 space-x-2">
-            <span className="rounded bg-linear-to-r from-green-800 to-emerald-800 px-2 py-1 text-white">
-              Genres:
-            </span>
-            {params.genres.map((g) => (
-              <span
-                key={g.mal_id}
-                className="rounded bg-linear-to-r from-gray-800 to-gray-900 px-2 py-1 text-white"
-              >
-                {g.name}
+          <div className="mt-6 space-y-6">
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded bg-linear-to-r from-green-800 to-emerald-800 px-2 py-1 text-white">
+                Genres:
               </span>
-            ))}
-          </div>
-          <div className="mt-2 space-x-2">
-            <span className="rounded bg-linear-to-r from-green-800 to-emerald-800 px-2 py-1 text-white">
-              Authors:
-            </span>
-            {params.authors.map((a) => (
-              <span
-                key={a.mal_id}
-                className="rounded bg-linear-to-r from-gray-800 to-gray-900 px-2 py-1 text-white"
-              >
-                {a.name}
+              {params.genres.map((g) => (
+                <span
+                  key={g.mal_id}
+                  className="rounded bg-linear-to-r from-gray-800 to-gray-900 px-2 py-1 text-white"
+                >
+                  {g.name}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded bg-linear-to-r from-green-800 to-emerald-800 px-2 py-1 text-white">
+                Authors:
               </span>
-            ))}
+              {params.authors.map((a) => (
+                <span
+                  key={a.mal_id}
+                  className="rounded bg-linear-to-r from-gray-800 to-gray-900 px-2 py-1 text-white"
+                >
+                  {a.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
