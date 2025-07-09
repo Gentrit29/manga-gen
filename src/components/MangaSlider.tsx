@@ -6,6 +6,8 @@ import { FaHeart, FaStar } from "react-icons/fa";
 import { useTop5Manga } from "../hooks/useTop5Manga";
 
 import type { MangaSlide } from "../types/manga";
+import { Link } from "react-router";
+import { formatGenreNameForUrl } from "../utils/formatters";
 
 function MangaSlider() {
   const { isLoading, top5Manga } = useTop5Manga();
@@ -48,7 +50,7 @@ function MangaSlider() {
                   {manga.synopsis}
                 </p>
                 <Link
-                  to={`/detail/${manga.mal_id}`}
+                  to={`/detail/${manga.mal_id}?title=${formatGenreNameForUrl(manga.title)}`}
                   className="text-sm font-bold text-green-400 md:text-lg"
                 >
                   Read More
@@ -65,7 +67,7 @@ function MangaSlider() {
                 </div>
               </div>
               <Link
-                to={`/detail/${manga.mal_id}`}
+                to={`/detail/${manga.mal_id}?title=${formatGenreNameForUrl(manga.title)}`}
                 className="mt-5 inline-block w-fit cursor-pointer rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:mt-10 md:text-lg"
               >
                 Show Detail

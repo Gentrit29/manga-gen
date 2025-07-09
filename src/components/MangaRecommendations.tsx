@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import type { MangaRecommendation } from "../types/manga";
 
 import { MdOutlineOpenInNew } from "react-icons/md";
+import { formatGenreNameForUrl } from "../utils/formatters";
 
 type MangaRecommendationsProps = {
   params: MangaRecommendation[];
@@ -18,7 +19,10 @@ function MangaRecommendations({ params }: MangaRecommendationsProps) {
       {params && params.length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {params.slice(0, 10).map(({ entry }, index) => (
-            <Link key={entry.mal_id} to={`/detail/${entry.mal_id}`}>
+            <Link
+              key={entry.mal_id}
+              to={`/detail/${entry.mal_id}?title=${formatGenreNameForUrl(entry.title)}`}
+            >
               <div className="group relative w-full">
                 <img
                   className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"

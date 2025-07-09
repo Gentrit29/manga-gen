@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 
 import type { MangaData } from "../types/manga";
+import { formatGenreNameForUrl } from "../utils/formatters";
 
 type MangaCardProps = {
   manga: MangaData;
@@ -9,7 +10,9 @@ type MangaCardProps = {
 
 function MangaCard({ manga, index }: MangaCardProps) {
   return (
-    <Link to={`/detail/${manga.mal_id}`}>
+    <Link
+      to={`/detail/${manga.mal_id}?title=${formatGenreNameForUrl(manga.title)}`}
+    >
       <div className="group relative">
         <img
           className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
