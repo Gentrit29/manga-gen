@@ -25,15 +25,20 @@ function Detail() {
     mangaCharacters,
   } = useMangaCharacters(Number(id));
 
-  if (isLoading || isRecommendationsLoading || isCharactersLoading) return null;
   if (error || recommendationsError || charactersError) return null;
 
   return (
     <>
-      <MangaHeader params={mangaFull} />
-      <MangaCharacters params={mangaCharacters} />
+      <MangaHeader params={mangaFull} isLoading={isLoading} />
+      <MangaCharacters
+        params={mangaCharacters}
+        isLoading={isCharactersLoading}
+      />
       <AboutSection />
-      <MangaRecommendations params={mangaRecommendations} />
+      <MangaRecommendations
+        params={mangaRecommendations}
+        isLoading={isRecommendationsLoading}
+      />
     </>
   );
 }
