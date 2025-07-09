@@ -8,6 +8,7 @@ import { Link } from "react-router";
 
 import MangaGrid from "../ui/MangaGrid";
 import MangaTabs from "../ui/MangaTabs";
+import SkeletonGrid from "../ui/SkeletonGrid";
 
 const tabs = [
   { label: "All", value: "manga" },
@@ -20,10 +21,10 @@ const tabs = [
 function MangaTop() {
   const [selectedTab, setSelectedTab] = useState("manga");
 
-  const { isLoading, error, topManga } = useTopManga(selectedTab, 1);
+  const { isLoading, topManga } = useTopManga(selectedTab, 1);
 
-  if (isLoading) return null;
-  if (error) return null;
+  // if (isLoading) return null;
+  // if (error) return null;
 
   return (
     <section className="layout space-y-4">
@@ -38,18 +39,25 @@ function MangaTop() {
           onSelectTab={setSelectedTab}
         />
       </div>
-      {topManga?.data && topManga.data.length > 0 && (
-        <MangaGrid manga={topManga.data} />
+      {isLoading ? (
+        <SkeletonGrid elements={25} />
+      ) : (
+        topManga?.data &&
+        topManga.data.length > 0 && (
+          <>
+            <MangaGrid manga={topManga.data} />{" "}
+            <div className="flex items-center justify-center">
+              <Link
+                to={`/top/${selectedTab}`}
+                className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:text-lg"
+              >
+                View More
+                <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
+              </Link>
+            </div>
+          </>
+        )
       )}
-      <div className="flex items-center justify-center">
-        <Link
-          to={`/top/${selectedTab}`}
-          className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:text-lg"
-        >
-          View More
-          <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
-        </Link>
-      </div>
     </section>
   );
 }

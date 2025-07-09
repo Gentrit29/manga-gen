@@ -6,12 +6,13 @@ import { A11y, Autoplay, Navigation } from "swiper/modules";
 import MangaGrid from "../ui/MangaGrid";
 import type { MangaData } from "../types/manga";
 import MangaCard from "./MangaCard";
+import SkeletonGrid from "../ui/SkeletonGrid";
 
 function MangaRandom() {
-  const { isLoading, error, randomManga } = useRandomManga();
+  const { isLoading, randomManga } = useRandomManga();
 
-  if (isLoading) return null;
-  if (error) return null;
+  // if (error) return null;
+
   return (
     <section className="mx-5 mt-15 space-y-4 lg:mx-20 2xl:mx-40">
       <div className="flex items-center space-x-2 md:space-x-4">
@@ -19,8 +20,11 @@ function MangaRandom() {
         <h2 className="text-2xl font-bold text-white">Random Manga Picks</h2>
       </div>
       <div className="hidden xl:block">
-        {randomManga && randomManga.length > 0 && (
-          <MangaGrid manga={randomManga} />
+        {isLoading ? (
+          <SkeletonGrid elements={5} />
+        ) : (
+          randomManga &&
+          randomManga.length > 0 && <MangaGrid manga={randomManga} />
         )}
       </div>
       <div className="xl:hidden">
