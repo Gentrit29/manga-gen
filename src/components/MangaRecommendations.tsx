@@ -10,7 +10,7 @@ type MangaRecommendationsProps = {
 
 function MangaRecommendations({ params }: MangaRecommendationsProps) {
   return (
-    <section className="mx-5 mt-15 space-y-4 lg:mx-20 xl:mx-50">
+    <section className="layout space-y-4">
       <div className="flex items-center space-x-2 md:space-x-4">
         <div className="h-10 w-1.5 rounded-sm bg-green-500"></div>
         <h2 className="text-2xl font-bold text-white">You May Also Like</h2>

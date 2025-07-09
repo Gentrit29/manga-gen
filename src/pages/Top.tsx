@@ -33,7 +33,7 @@ function Top() {
   const TOP_LABEL = getTopLabel(category, selectedTab);
 
   return (
-    <div className="mx-20 my-15 space-y-20">
+    <div className="layout mt-15 space-y-20">
       <TopHeader
         label={TOP_LABEL.label}
         desc={TOP_LABEL.desc}

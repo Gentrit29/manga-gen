@@ -29,7 +29,7 @@ function MangaSlider() {
               className="absolute inset-0 scale-100 bg-cover bg-center blur-xs brightness-50 sm:blur-sm"
               style={{ backgroundImage: `url(${manga.images.webp.image_url})` }}
             />
-            <div className="relative z-10 flex h-full flex-col justify-center px-5 py-10 lg:px-20 xl:px-50">
+            <div className="relative z-10 flex h-full flex-col justify-center px-5 py-10 lg:px-20 2xl:px-40">
               <div className="flex h-10 w-fit items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4">
                 <h3 className="text-base text-white md:text-lg">
                   Ranked #{manga.rank} in Top Manga

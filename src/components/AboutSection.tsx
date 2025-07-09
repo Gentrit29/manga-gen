@@ -3,7 +3,7 @@ import { IoLogoGithub } from "react-icons/io5";
 function AboutSection() {
   return (
     <section
-      className="relative mx-5 mt-15 bg-cover bg-center bg-no-repeat py-20 text-white brightness-110 lg:mx-20 xl:mx-50"
+      className="layout relative bg-cover bg-center bg-no-repeat py-20 text-white brightness-110"
       style={{
         backgroundImage: 'url("/about-section/aboutsectionbanner.jpg")',
       }}

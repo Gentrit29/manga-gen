@@ -14,7 +14,7 @@ function MangaGenres() {
   if (error) return null;
 
   return (
-    <section className="mx-5 mt-15 space-y-10 lg:mx-20 xl:mx-50">
+    <section className="layout space-y-10">
       <div className="flex justify-center text-white">
         <h1 className="text-center text-2xl font-bold">
           Discover Manga by Genre!

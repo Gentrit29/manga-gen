@@ -13,7 +13,7 @@ function MangaRandom() {
   if (isLoading) return null;
   if (error) return null;
   return (
-    <section className="mx-5 mt-15 space-y-4 lg:mx-20 xl:mx-50">
+    <section className="mx-5 mt-15 space-y-4 lg:mx-20 2xl:mx-40">
       <div className="flex items-center space-x-2 md:space-x-4">
         <div className="h-10 w-1.5 rounded-sm bg-green-500"></div>
         <h2 className="text-2xl font-bold text-white">Random Manga Picks</h2>
