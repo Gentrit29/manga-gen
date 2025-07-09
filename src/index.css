@@ -11,6 +11,12 @@ body {
   background-color: #171717;
 }
 
+@layer components {
+  .layout {
+    @apply mx-5 mt-15 lg:mx-20 2xl:mx-40;
+  }
+}
+
 /*swiper style */
 .swiper-button-prev,
 .swiper-button-next {
