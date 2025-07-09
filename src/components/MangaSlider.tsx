@@ -8,11 +8,12 @@ import { useTop5Manga } from "../hooks/useTop5Manga";
 import type { MangaSlide } from "../types/manga";
 import { Link } from "react-router";
 import { formatGenreNameForUrl } from "../utils/formatters";
+import MangaSliderSkeleton from "./MangaSliderSkeleton";
 
 function MangaSlider() {
   const { isLoading, top5Manga } = useTop5Manga();
 
-  if (isLoading) return null;
+  if (isLoading) return <MangaSliderSkeleton />;
 
   return (
     <Swiper
