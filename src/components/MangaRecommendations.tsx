@@ -4,19 +4,26 @@ import type { MangaRecommendation } from "../types/manga";
 
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { formatGenreNameForUrl } from "../utils/formatters";
+import SkeletonGrid from "../ui/SkeletonGrid";
 
 type MangaRecommendationsProps = {
   params: MangaRecommendation[];
+  isLoading: boolean;
 };
 
-function MangaRecommendations({ params }: MangaRecommendationsProps) {
+function MangaRecommendations({
+  params,
+  isLoading,
+}: MangaRecommendationsProps) {
   return (
     <section className="layout space-y-4">
       <div className="flex items-center space-x-2 md:space-x-4">
         <div className="h-10 w-1.5 rounded-sm bg-green-500"></div>
         <h2 className="text-2xl font-bold text-white">You May Also Like</h2>
       </div>
-      {params && params.length > 0 ? (
+      {isLoading ? (
+        <SkeletonGrid elements={10} />
+      ) : params && params.length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {params.slice(0, 10).map(({ entry }, index) => (
             <Link
