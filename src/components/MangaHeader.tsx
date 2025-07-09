@@ -1,12 +1,16 @@
 import type { MangaData } from "../types/manga";
 
 import { FaHeart, FaStar } from "react-icons/fa";
+import MangaHeaderSkeleton from "./MangaHeaderSkeleton";
 
 type MangaHeaderProps = {
   params: MangaData;
+  isLoading: boolean;
 };
 
-function MangaHeader({ params }: MangaHeaderProps) {
+function MangaHeader({ params, isLoading }: MangaHeaderProps) {
+  if (isLoading) return <MangaHeaderSkeleton />;
+
   return (
     <div className="relative py-15">
       <div
