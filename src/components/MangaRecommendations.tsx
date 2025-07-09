@@ -21,7 +21,7 @@ function MangaRecommendations({ params }: MangaRecommendationsProps) {
             <Link key={entry.mal_id} to={`/detail/${entry.mal_id}`}>
               <div className="group relative w-full">
                 <img
-                  className="h-60 w-60 rounded-lg brightness-90 md:h-80 xl:w-full"
+                  className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
                   src={entry.images.webp.image_url}
                   alt={entry.title}
                 />

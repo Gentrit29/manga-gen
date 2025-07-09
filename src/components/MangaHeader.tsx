@@ -13,7 +13,7 @@ function MangaHeader({ params }: MangaHeaderProps) {
         className="absolute inset-0 bg-cover bg-center blur-sm brightness-30"
         style={{ backgroundImage: `url(${params.images.webp.image_url})` }}
       />
-      <section className="relative z-10 flex flex-col items-center px-5 lg:items-start lg:px-20 xl:flex-row xl:space-x-8 xl:px-50">
+      <section className="relative z-10 flex flex-col items-center px-5 lg:items-start lg:px-20 xl:flex-row xl:space-x-8 2xl:px-40">
         <img
           src={params.images.webp.image_url}
           alt={params.title}
