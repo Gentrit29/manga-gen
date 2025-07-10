@@ -1,4 +1,4 @@
-import type { MangaData } from "../types/manga";
+import type { MangaData } from "../../types/manga";
 
 type TopHeaderProps = {
   label: string;

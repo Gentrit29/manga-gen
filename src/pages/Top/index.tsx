@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+
+import { useTopManga } from "../../hooks/useTopManga";
+
+import { getTopLabel } from "../../utils/labels";
+
+import TopHeaderSection from "./TopHeaderSection";
+import TopContentSection from "./TopContentSection";
+
+const tabs = [
+  { label: "Manga", value: "manga" },
+  { label: "Manhwa", value: "manhwa" },
+  { label: "Manhua", value: "manhua" },
+  { label: "Novel", value: "novel" },
+  { label: "Light Novel", value: "lightnovel" },
+];
+
+function Top() {
+  const { category } = useParams();
+  const [nextPage, setNextPage] = useState(1);
+  const [selectedTab, setSelectedTab] = useState("manga");
+
+  useEffect(() => {
+    setNextPage(1);
+  }, [category, selectedTab]);
+
+  const { isLoading, topManga } = useTopManga(
+    category || "manga",
+    nextPage,
+    selectedTab,
+  );
+
+  const TOP_LABEL = getTopLabel(category, selectedTab);
+
+  return (
+    <div className="layout mt-15 space-y-20">
+      <TopHeaderSection
+        isLoading={isLoading}
+        label={TOP_LABEL.label}
+        desc={TOP_LABEL.desc}
+        manga={topManga?.data}
+      />
+      <TopContentSection
+        isLoading={isLoading}
+        manga={topManga}
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+        setNextPage={setNextPage}
+        tabs={tabs}
+      />
+    </div>
+  );
+}
+
+export default Top;
