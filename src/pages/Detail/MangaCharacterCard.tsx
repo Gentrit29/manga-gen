@@ -1,4 +1,4 @@
-import type { MangaCharacter } from "../types/manga";
+import type { MangaCharacter } from "../../types/manga";
 
 type MangaCharacterCardProps = {
   character: MangaCharacter;

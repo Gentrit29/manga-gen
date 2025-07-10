@@ -1,10 +1,11 @@
 import { Link } from "react-router";
-
-import type { MangaRecommendation } from "../types/manga";
-
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { formatGenreNameForUrl } from "../utils/formatters";
-import SkeletonGrid from "../ui/SkeletonGrid";
+
+import SkeletonGrid from "../../ui/SkeletonGrid";
+
+import type { MangaRecommendation } from "../../types/manga";
+
+import { formatGenreNameForUrl } from "../../utils/formatters";
 
 type MangaRecommendationsProps = {
   params: MangaRecommendation[];

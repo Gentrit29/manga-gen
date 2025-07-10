@@ -1,12 +1,14 @@
 import { useParams } from "react-router";
-import { useMangaFullById } from "../hooks/useMangaFullById";
-import MangaHeader from "../components/MangaHeader";
-import MangaRecommendations from "../components/MangaRecommendations";
-import { useMangaRecommendations } from "../hooks/useMangaRecommendations";
-import { useMangaCharacters } from "../hooks/useMangaCharacters";
 
-import MangaCharacters from "../components/MangaCharacters";
-import AboutSection from "../components/AboutSection";
+import MangaHeader from "./MangaHeader";
+import MangaRecommendations from "./MangaRecommendations";
+import MangaCharacters from "./MangaCharacters";
+
+import AboutSection from "../../components/AboutSection";
+
+import { useMangaFullById } from "../../hooks/useMangaFullById";
+import { useMangaRecommendations } from "../../hooks/useMangaRecommendations";
+import { useMangaCharacters } from "../../hooks/useMangaCharacters";
 
 function Detail() {
   const { id } = useParams();

@@ -1,6 +1,8 @@
-import type { MangaCharacter } from "../types/manga";
-import SkeletonGrid from "../ui/SkeletonGrid";
 import MangaCharacterCard from "./MangaCharacterCard";
+
+import type { MangaCharacter } from "../../types/manga";
+
+import SkeletonGrid from "../../ui/SkeletonGrid";
 
 type MangaCharacterProps = {
   params: MangaCharacter[];

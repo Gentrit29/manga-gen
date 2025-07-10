@@ -1,7 +1,8 @@
-import type { MangaData } from "../types/manga";
+import MangaHeaderSkeleton from "./MangaHeaderSkeleton";
+
+import type { MangaData } from "../../types/manga";
 
 import { FaHeart, FaStar } from "react-icons/fa";
-import MangaHeaderSkeleton from "./MangaHeaderSkeleton";
 
 type MangaHeaderProps = {
   params: MangaData;
