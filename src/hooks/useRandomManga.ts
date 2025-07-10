@@ -4,6 +4,8 @@ import { getRandomMangas } from "../api/mangaApi";
 export function useRandomManga() {
   const {
     isLoading,
+    isFetching,
+    refetch,
     error,
     data: randomManga,
   } = useQuery({
@@ -11,5 +13,5 @@ export function useRandomManga() {
     queryFn: getRandomMangas,
   });
 
-  return { isLoading, error, randomManga };
+  return { isLoading, isFetching, refetch, error, randomManga };
 }
