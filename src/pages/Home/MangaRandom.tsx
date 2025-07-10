@@ -1,12 +1,14 @@
-import { useRandomManga } from "../hooks/useRandomManga";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 
-import MangaGrid from "../ui/MangaGrid";
-import type { MangaData } from "../types/manga";
-import MangaCard from "./MangaCard";
-import SkeletonGrid from "../ui/SkeletonGrid";
+import MangaCard from "../../components/MangaCard";
+
+import MangaGrid from "../../ui/MangaGrid";
+import SkeletonGrid from "../../ui/SkeletonGrid";
+
+import { useRandomManga } from "../../hooks/useRandomManga";
+
+import type { MangaData } from "../../types/manga";
 
 function MangaRandom() {
   const { isLoading, randomManga } = useRandomManga();

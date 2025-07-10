@@ -1,12 +1,13 @@
 import { Link } from "react-router";
-
-import { useMangaGenres } from "../hooks/useMangaGenres";
-
-import type { Genre } from "../types/manga";
-
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { formatGenreNameForUrl } from "../utils/formatters";
-import SkeletonGrid from "../ui/SkeletonGrid";
+
+import SkeletonGrid from "../../ui/SkeletonGrid";
+
+import { useMangaGenres } from "../../hooks/useMangaGenres";
+
+import { formatGenreNameForUrl } from "../../utils/formatters";
+
+import type { Genre } from "../../types/manga";
 
 function MangaGenres() {
   const { isLoading, mangaGenres } = useMangaGenres();

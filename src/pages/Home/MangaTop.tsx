@@ -1,14 +1,12 @@
 import { useState } from "react";
-
-import { useTopManga } from "../hooks/useTopManga";
-
+import { Link } from "react-router";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
-import { Link } from "react-router";
+import { useTopManga } from "../../hooks/useTopManga";
 
-import MangaGrid from "../ui/MangaGrid";
-import MangaTabs from "../ui/MangaTabs";
-import SkeletonGrid from "../ui/SkeletonGrid";
+import MangaGrid from "../../ui/MangaGrid";
+import MangaTabs from "../../ui/MangaTabs";
+import SkeletonGrid from "../../ui/SkeletonGrid";
 
 const tabs = [
   { label: "All", value: "manga" },

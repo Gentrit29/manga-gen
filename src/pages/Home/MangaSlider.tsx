@@ -1,14 +1,15 @@
+import { Link } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, A11y, Autoplay, Navigation } from "swiper/modules";
-
 import { FaHeart, FaStar } from "react-icons/fa";
 
-import { useTop5Manga } from "../hooks/useTop5Manga";
-
-import type { MangaSlide } from "../types/manga";
-import { Link } from "react-router";
-import { formatGenreNameForUrl } from "../utils/formatters";
 import MangaSliderSkeleton from "./MangaSliderSkeleton";
+
+import { useTop5Manga } from "../../hooks/useTop5Manga";
+
+import type { MangaSlide } from "../../types/manga";
+
+import { formatGenreNameForUrl } from "../../utils/formatters";
 
 function MangaSlider() {
   const { isLoading, top5Manga } = useTop5Manga();
