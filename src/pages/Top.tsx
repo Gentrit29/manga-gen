@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import MangaGrid from "../ui/MangaGrid";
 import MangaTabs from "../ui/MangaTabs";
 import { getTopLabel } from "../utils/labels";
+import SkeletonGrid from "../ui/SkeletonGrid";
+import TopHeaderSkeleton from "../components/TopHeaderSkeleton";
 
 const tabs = [
   { label: "Manga", value: "manga" },
@@ -25,36 +27,45 @@ function Top() {
     setNextPage(1);
   }, [category]);
 
-  const { topManga } = useTopManga(category || "manga", nextPage, selectedTab);
+  const { isLoading, topManga } = useTopManga(
+    category || "manga",
+    nextPage,
+    selectedTab,
+  );
 
-  // if (isLoading) return null;
   // if (error) return null;
 
   const TOP_LABEL = getTopLabel(category, selectedTab);
 
   return (
     <div className="layout mt-15 space-y-20">
-      <TopHeader
-        label={TOP_LABEL.label}
-        desc={TOP_LABEL.desc}
-        params={
-          topManga?.data[Math.floor(Math.random() * topManga.data.length)]
-        }
-      />
+      {isLoading ? (
+        <TopHeaderSkeleton />
+      ) : (
+        <TopHeader
+          label={TOP_LABEL.label}
+          desc={TOP_LABEL.desc}
+          params={
+            topManga?.data[Math.floor(Math.random() * topManga.data.length)]
+          }
+        />
+      )}
       <div className="space-y-6">
         <MangaTabs
           tabs={tabs}
           selectedTab={selectedTab}
           onSelectTab={setSelectedTab}
         />
-        {topManga?.data && topManga.data.length > 0 ? (
+        {isLoading ? (
+          <SkeletonGrid elements={25} />
+        ) : topManga?.data && topManga.data.length > 0 ? (
           <MangaGrid manga={topManga.data} />
         ) : (
           <p className="text-center text-lg text-white">
             No results to display
           </p>
         )}
-        {topManga?.pagination && topManga?.pagination.last_visible_page > 1 && (
+        {topManga?.pagination.last_visible_page > 1 && (
           <Pagination
             currentPage={topManga?.pagination.current_page}
             firstPage={1}
