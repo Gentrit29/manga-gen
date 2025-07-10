@@ -3,10 +3,10 @@ import { NavLink } from "react-router";
 import { IoLogoGithub, IoShieldOutline, IoSearch } from "react-icons/io5";
 
 import DropdownMenu from "./DropdownMenu";
-import { useMangaSearch } from "../hooks/useMangaSearch";
+import { useMangaSearch } from "../../hooks/useMangaSearch";
 import { useState } from "react";
-import { useDebounce } from "../hooks/useDebounce";
-import SearchModal from "./SearchModal";
+import { useDebounce } from "../../hooks/useDebounce";
+import SearchModal from "../../ui/SearchModal";
 
 function Header() {
   const [query, setQuery] = useState("");
