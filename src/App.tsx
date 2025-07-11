@@ -12,7 +12,9 @@ import Genres from "./pages/Genres";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 3600,
+      staleTime: 60 * 60 * 24 * 1000, //24h - sync with Jikan API caching system
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
     },
   },
 });
