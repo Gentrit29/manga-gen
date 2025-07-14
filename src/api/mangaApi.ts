@@ -1,4 +1,4 @@
-const JIKAN_API_URL = import.meta.env.JIKAN_API_BASE_URL;
+const JIKAN_API_URL = import.meta.env.VITE_JIKAN_API_BASE_URL;
 
 export const getTop5Manga = async () => {
   const res = await fetch(`${JIKAN_API_URL}/top/manga?limit=5&sfw=true`);
@@ -15,18 +15,18 @@ export const getTop5Manga = async () => {
 };
 
 export const getRandomMangas = async () => {
-  const res = await Promise.all(
-    Array.from({ length: 5 }).map(() =>
-      fetch(`${JIKAN_API_URL}/random/manga?sfw=true`).then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed fetching random mangas");
-        }
-        return res.json();
-      }),
-    ),
+  const randomPage = Math.floor(Math.random() * 100) + 1;
+  const res = await fetch(
+    `${JIKAN_API_URL}/manga?sfw=true&genres_exclude=49,65&min_score=7&limit=5&page=${randomPage}`,
   );
 
-  return res.map((result) => result.data);
+  if (!res.ok) {
+    throw new Error("Failed fetching random mangas");
+  }
+
+  const json = await res.json();
+
+  return json.data;
 };
 
 export const getTopManga = async (
@@ -34,12 +34,33 @@ export const getTopManga = async (
   page: number = 1,
   type: string = "",
 ) => {
-  //category "manga" is not a valid filter for he jikan api
-  //but I want to keep the /top/manga url, so I made a conditional fetch
-  const url =
-    category && category !== "manga"
-      ? `${JIKAN_API_URL}/top/manga?filter=${category}&type=${type}&page=${page}&sfw=true`
-      : `${JIKAN_API_URL}/top/manga?sfw=true&page=${page}&type=${type}`;
+  const map = [
+    {
+      route: "manga",
+      params: `&order_by=score&type=${type}&sort=desc`,
+    },
+    {
+      route: "publishing",
+      params: `&type=${type}&status=publishing&sort=desc`,
+    },
+    {
+      route: "upcoming",
+      params: `&type=${type}&status=upcoming&sort=asc`,
+    },
+    {
+      route: "bypopularity",
+      params: `&order_by=popularity&type=${type}&sort=desc`,
+    },
+    { route: "favorite", params: `&order_by=favorites&type=${type}&sort=desc` },
+  ];
+
+  const routeConfig = map.find((r) => r.route === category);
+
+  if (!routeConfig) throw new Error("Route not found");
+
+  const baseURL = `${JIKAN_API_URL}/manga?sfw=true&genres_exclude=49,65&page=${page}`;
+
+  const url = `${baseURL}${routeConfig.params}`;
 
   const res = await fetch(url);
 
