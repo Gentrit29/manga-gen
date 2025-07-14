@@ -1,6 +1,9 @@
 import { Link } from "react-router";
 
 import type { MangaData } from "../types/manga";
+
+import { FaStar } from "react-icons/fa";
+
 import { formatGenreNameForUrl } from "../utils/formatters";
 
 type MangaCardProps = {
@@ -24,10 +27,11 @@ function MangaCard({ manga, index }: MangaCardProps) {
             <h3 className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
               #{index + 1}
             </h3>
-            {manga.genres.some((g) => g.name === "Erotica") && (
-              <h3 className="w-fit rounded-lg bg-gradient-to-r from-rose-500/70 to-pink-500/70 px-1 py-2 text-lg font-semibold text-white">
-                16+
-              </h3>
+            {manga.score && (
+              <div className="flex w-fit items-center space-x-1 rounded-lg bg-gradient-to-r from-yellow-500/70 to-orange-500/70 px-1 py-2 text-lg font-semibold text-white">
+                <FaStar />
+                <span>{manga.score}</span>
+              </div>
             )}
           </div>
           <h3 className="font-light text-white">{manga.title}</h3>
