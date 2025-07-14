@@ -1,14 +1,15 @@
-import { NavLink } from "react-router";
-
-import { IoLogoGithub, IoShieldOutline, IoSearch } from "react-icons/io5";
-
-import DropdownMenu from "./DropdownMenu";
-import { useMangaSearch } from "../../hooks/useMangaSearch";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+
+import NavBarDesktop from "./NavBarDesktop";
+import NavBarMobile from "./NavBarMobile";
+
+import { useMangaSearch } from "../../hooks/useMangaSearch";
 import { useDebounce } from "../../hooks/useDebounce";
 import SearchModal from "../../ui/SearchModal";
 
 function Header() {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [query, setQuery] = useState("");
   const [isSearchOpen, setSearchOpen] = useState(false);
 
@@ -22,41 +23,12 @@ function Header() {
 
   return (
     <>
-      <header className="z-20 h-20 bg-neutral-800">
-        <nav className="flex h-full items-center space-x-10 px-20 text-white">
-          <h1 className="cursor-pointer text-2xl font-bold">Manga GEN</h1>
-          <ul className="flex space-x-4 text-lg font-light">
-            <li className="transition-colors duration-300 hover:text-green-500">
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <DropdownMenu />
-          </ul>
-          <div className="ml-auto flex items-center space-x-4 text-lg font-light">
-            <button
-              className="ml-auto flex cursor-pointer items-center font-light"
-              onClick={() => setSearchOpen(true)}
-              aria-label="Open search"
-            >
-              <IoSearch className="h-6 w-6" />
-            </button>
-            <div className="flex space-x-4">
-              <button
-                title="Enable NSFW"
-                aria-label="Button to enable NSFW content"
-                className="cursor-pointer text-green-500 transition-colors duration-300 hover:text-red-500"
-              >
-                <IoShieldOutline className="h-6 w-6" />
-              </button>
-              <a
-                href="github.com/Gentrit29"
-                target="_blank"
-                aria-label="Go to github repository"
-              >
-                <IoLogoGithub className="h-6 w-6" />
-              </a>
-            </div>
-          </div>
-        </nav>
+      <header className="z-20 h-20 bg-neutral-800 px-5 lg:px-20 2xl:px-40">
+        {isMobile ? (
+          <NavBarMobile onSearchClick={setSearchOpen} />
+        ) : (
+          <NavBarDesktop onSearchClick={setSearchOpen} />
+        )}
       </header>
       <SearchModal
         isOpen={isSearchOpen}
