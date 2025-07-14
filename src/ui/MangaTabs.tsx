@@ -28,12 +28,15 @@ function MangaTabs({ tabs, selectedTab, onSelectTab }: MangaTabsProps) {
         ))}
       </div>
       <div className="w-full md:hidden">
-        <select className="mt-3 w-full rounded-sm border-1 border-gray-400 text-lg text-white">
+        <select
+          className="mt-3 w-full rounded-sm border-1 border-gray-400 text-lg text-white"
+          onChange={(e) => onSelectTab(e.target.value)}
+        >
           {tabs.map((tab) => (
             <option
               className="bg-neutral-900"
               key={tab.value}
-              onClick={() => onSelectTab(tab.value)}
+              value={tab.value}
             >
               {tab.label}
             </option>
