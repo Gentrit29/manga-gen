@@ -24,7 +24,6 @@ function TopContentSection({
 }: TopContentSectionProps) {
   if (isLoading) return <SkeletonGrid elements={25} />;
 
-  if (!manga) return null;
   return (
     <div className="space-y-6">
       <MangaTabs
@@ -33,17 +32,17 @@ function TopContentSection({
         onSelectTab={setSelectedTab}
       />
       {manga?.data && manga.data.length > 0 ? (
-        <MangaGrid manga={manga.data} />
+        <>
+          <MangaGrid manga={manga.data} />
+          <Pagination
+            currentPage={manga?.pagination.current_page}
+            firstPage={1}
+            lastPage={manga?.pagination.last_visible_page}
+            onPageChange={setNextPage}
+          />
+        </>
       ) : (
         <p className="text-center text-lg text-white">No results to display</p>
-      )}
-      {manga?.pagination.last_visible_page > 1 && (
-        <Pagination
-          currentPage={manga?.pagination.current_page}
-          firstPage={1}
-          lastPage={manga?.pagination.last_visible_page}
-          onPageChange={setNextPage}
-        />
       )}
     </div>
   );

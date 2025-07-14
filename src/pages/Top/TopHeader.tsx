@@ -3,7 +3,7 @@ import type { MangaData } from "../../types/manga";
 type TopHeaderProps = {
   label: string;
   desc: string;
-  params: MangaData;
+  params?: MangaData;
 };
 
 function TopHeader({ label, params, desc }: TopHeaderProps) {

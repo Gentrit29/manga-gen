@@ -21,7 +21,7 @@ function TopHeaderSection({
     <TopHeader
       label={label}
       desc={desc}
-      params={manga[Math.floor(Math.random() * manga.length)]}
+      params={manga && manga.length > 0 ? manga[0] : undefined}
     />
   );
 }
