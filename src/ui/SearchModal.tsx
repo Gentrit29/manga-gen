@@ -6,6 +6,7 @@ import type { MangaData } from "../types/manga";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { formatNameForUrl } from "../utils/formatters";
 
 type SearchModalProps = {
   query: string;
@@ -104,7 +105,8 @@ function SearchModal({
           </div>
           <div className="mt-2 flex items-center justify-center">
             <Link
-              to={`/search?q=${query}`}
+              to={`/search?q=${formatNameForUrl(query)}`}
+              onClick={onClose}
               className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:text-lg"
             >
               View All Results
