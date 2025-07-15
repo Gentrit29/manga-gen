@@ -11,11 +11,20 @@ import SkeletonGrid from "../../ui/SkeletonGrid";
 import { useRandomManga } from "../../hooks/useRandomManga";
 
 import type { MangaData } from "../../types/manga";
+import { useMediaQuery } from "react-responsive";
+import MangaRandomSkeletonMobile from "./MangaRandomSkeletonMobile";
 
 function MangaRandom() {
+  const isMobile = useMediaQuery({ maxWidth: 1280 });
   const { isLoading, isFetching, refetch, randomManga } = useRandomManga();
 
   // if (error) return null;
+
+  const loadingSkeleton = isMobile ? (
+    <MangaRandomSkeletonMobile />
+  ) : (
+    <SkeletonGrid elements={5} />
+  );
 
   return (
     <section className="mx-5 mt-15 space-y-4 lg:mx-20 2xl:mx-40">
@@ -34,15 +43,13 @@ function MangaRandom() {
           />
         </button>
       </div>
-      <div className="hidden xl:block">
-        {isLoading || isFetching ? (
-          <SkeletonGrid elements={5} />
-        ) : (
-          randomManga &&
-          randomManga.length > 0 && <MangaGrid manga={randomManga} />
-        )}
-      </div>
-      <div className="xl:hidden">
+
+      {isLoading || isFetching ? (
+        loadingSkeleton
+      ) : !isMobile ? (
+        randomManga &&
+        randomManga.length > 0 && <MangaGrid manga={randomManga} />
+      ) : (
         <Swiper
           modules={[A11y, Autoplay, Navigation]}
           slidesPerView={"auto"}
@@ -58,7 +65,7 @@ function MangaRandom() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      )}
     </section>
   );
 }
