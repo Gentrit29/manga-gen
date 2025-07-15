@@ -4,12 +4,16 @@ import type { MangaCharacter } from "../../types/manga";
 
 import SkeletonGrid from "../../ui/SkeletonGrid";
 
+import { motion } from "framer-motion";
+import { useGridAnimation } from "../../hooks/useGridAnimation";
+
 type MangaCharacterProps = {
   params: MangaCharacter[];
   isLoading: boolean;
 };
 
 function MangaCharacters({ params, isLoading }: MangaCharacterProps) {
+  const animation = useGridAnimation();
   return (
     <section className="layout space-y-4">
       <div className="flex items-center space-x-2 md:space-x-4">
@@ -20,11 +24,19 @@ function MangaCharacters({ params, isLoading }: MangaCharacterProps) {
         <SkeletonGrid elements={25} />
       ) : params && params.length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {params?.slice(0, 25).map((manga: MangaCharacter) => (
-            <MangaCharacterCard
-              key={manga.character.mal_id}
-              character={manga}
-            />
+          {params?.slice(0, 25).map((manga: MangaCharacter, idx: number) => (
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={animation}
+              custom={idx}
+              viewport={{ once: true, amount: 0 }}
+            >
+              <MangaCharacterCard
+                key={manga.character.mal_id}
+                character={manga}
+              />
+            </motion.div>
           ))}
         </div>
       ) : (
