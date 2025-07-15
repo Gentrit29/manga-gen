@@ -8,6 +8,7 @@ import Top from "./pages/Top";
 import Detail from "./pages/Detail";
 import Genre from "./pages/Genre";
 import Genres from "./pages/Genres";
+import Search from "./pages/Search";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient({
@@ -34,6 +35,7 @@ function App() {
               <Route path="/genres" element={<Genres />} />
               <Route path="/genre/:id" element={<Genre />} />
               <Route path="/top/:category" element={<Top />} />
+              <Route path="/search" element={<Search />} />
             </Route>
           </Routes>
         </ScrollToTop>
