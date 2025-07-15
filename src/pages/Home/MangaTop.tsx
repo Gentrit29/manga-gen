@@ -19,10 +19,7 @@ const tabs = [
 function MangaTop() {
   const [selectedTab, setSelectedTab] = useState("manga");
 
-  const { isLoading, topManga } = useTopManga(selectedTab, 1);
-
-  // if (isLoading) return null;
-  // if (error) return null;
+  const { isLoading, topManga } = useTopManga(selectedTab, 1, "manga");
 
   return (
     <section className="layout space-y-4">
