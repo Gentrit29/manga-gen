@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import { formatGenreNameForUrl } from "../utils/formatters";
+import { formatNameForUrl } from "../utils/formatters";
 
 import type { Genre } from "../types/manga";
 import { useGridAnimation } from "../hooks/useGridAnimation";
@@ -21,7 +21,7 @@ function GenresGrid({ mangaGenres }: { mangaGenres: Genre[] }) {
           variants={animation}
         >
           <Link
-            to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
+            to={`/genre/${genre.mal_id}?name=${formatNameForUrl(genre.name)}`}
           >
             <div className="w-30 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500 md:w-40">
               <span>{genre.name}</span>
