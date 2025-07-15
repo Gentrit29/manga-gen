@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router";
 
 import { useMangaSearchByGenre } from "../../hooks/useMangaSearchByGenre";
 
-import { formatGenreNameForDisplay } from "../../utils/formatters";
+import { formatNameForDisplay } from "../../utils/formatters";
 
 import GenreHeaderSection from "./GenreHeaderSection";
 import GenreContentSection from "./GenreContentSection";
@@ -15,7 +15,7 @@ function Genre() {
 
   const genreName = new URLSearchParams(location.search).get("name");
 
-  const formattedName = genreName ? formatGenreNameForDisplay(genreName) : "";
+  const formattedName = genreName ? formatNameForDisplay(genreName) : "";
 
   const [nextPage, setNextPage] = useState(1);
 

@@ -5,7 +5,7 @@ import SkeletonGrid from "../../ui/SkeletonGrid";
 
 import type { MangaRecommendation } from "../../types/manga";
 
-import { formatGenreNameForUrl } from "../../utils/formatters";
+import { formatNameForUrl } from "../../utils/formatters";
 import { useGridAnimation } from "../../hooks/useGridAnimation";
 
 import { motion } from "framer-motion";
@@ -40,7 +40,7 @@ function MangaRecommendations({
               custom={idx}
             >
               <Link
-                to={`/detail/${entry.mal_id}?title=${formatGenreNameForUrl(entry.title)}`}
+                to={`/detail/${entry.mal_id}?title=${formatNameForUrl(entry.title)}`}
               >
                 <div className="group relative w-full">
                   <img

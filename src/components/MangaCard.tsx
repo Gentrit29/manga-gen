@@ -4,7 +4,7 @@ import type { MangaData } from "../types/manga";
 
 import { FaStar } from "react-icons/fa";
 
-import { formatGenreNameForUrl } from "../utils/formatters";
+import { formatNameForUrl } from "../utils/formatters";
 
 type MangaCardProps = {
   manga: MangaData;
@@ -13,9 +13,7 @@ type MangaCardProps = {
 
 function MangaCard({ manga, index }: MangaCardProps) {
   return (
-    <Link
-      to={`/detail/${manga.mal_id}?title=${formatGenreNameForUrl(manga.title)}`}
-    >
+    <Link to={`/detail/${manga.mal_id}?title=${formatNameForUrl(manga.title)}`}>
       <div className="group relative">
         <img
           className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
