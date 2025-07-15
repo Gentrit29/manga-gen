@@ -8,6 +8,7 @@ import Top from "./pages/Top";
 import Detail from "./pages/Detail";
 import Genre from "./pages/Genre";
 import Genres from "./pages/Genres";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,16 +25,18 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<Navigate replace to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/genres" element={<Genres />} />
-            <Route path="/genre/:id" element={<Genre />} />
-            <Route path="/top/:category" element={<Top />} />
-          </Route>
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Navigate replace to="/home" />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/genres" element={<Genres />} />
+              <Route path="/genre/:id" element={<Genre />} />
+              <Route path="/top/:category" element={<Top />} />
+            </Route>
+          </Routes>
+        </ScrollToTop>
       </BrowserRouter>
     </QueryClientProvider>
   );
