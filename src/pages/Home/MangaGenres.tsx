@@ -5,9 +5,7 @@ import SkeletonGrid from "../../ui/SkeletonGrid";
 
 import { useMangaGenres } from "../../hooks/useMangaGenres";
 
-import { formatGenreNameForUrl } from "../../utils/formatters";
-
-import type { Genre } from "../../types/manga";
+import GenresGrid from "../../ui/GenresGrid";
 
 function MangaGenres() {
   const { isLoading, mangaGenres } = useMangaGenres();
@@ -27,20 +25,7 @@ function MangaGenres() {
         />
       ) : (
         <>
-          <div className="mt-10 grid grid-cols-2 place-items-center gap-2 text-white sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {mangaGenres.map((genre: Genre) => (
-              <>
-                <Link
-                  key={genre.mal_id}
-                  to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
-                >
-                  <div className="w-30 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500 md:w-40">
-                    <span>{genre.name}</span>
-                  </div>
-                </Link>
-              </>
-            ))}
-          </div>
+          <GenresGrid mangaGenres={mangaGenres} />
           <div className="flex items-center justify-center">
             <Link
               to="/genres"

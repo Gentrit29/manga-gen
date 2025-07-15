@@ -1,13 +1,12 @@
-import { Link } from "react-router";
-
 import type { Genre } from "../../types/manga";
 
-import { formatGenreNameForUrl } from "../../utils/formatters";
 import SkeletonGrid from "../../ui/SkeletonGrid";
 import {
   filterExplicitGenre,
   removeDuplicateGenresTag,
 } from "../../utils/helpers";
+
+import GenresGrid from "../../ui/GenresGrid";
 
 type GenresContentSectionProps = {
   isLoading: boolean;
@@ -33,19 +32,7 @@ function GenresContentSection({
 
   const uniqueGenres = removeDuplicateGenresTag(filterGenres);
 
-  return (
-    <div className="grid grid-cols-2 place-items-center gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-      {uniqueGenres.map((genre: Genre) => (
-        <Link
-          key={genre.mal_id}
-          to={`/genre/${genre.mal_id}?name=${formatGenreNameForUrl(genre.name)}`}
-          className="w-30 rounded-sm border-1 border-green-500 p-1 text-white transition-colors duration-300 hover:bg-green-500 md:w-40"
-        >
-          <span>{genre.name}</span>
-        </Link>
-      ))}
-    </div>
-  );
+  return <GenresGrid mangaGenres={uniqueGenres} />;
 }
 
 export default GenresContentSection;
