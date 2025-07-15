@@ -14,7 +14,7 @@ function Header() {
   const [isSearchOpen, setSearchOpen] = useState(false);
 
   const debounceQuery = useDebounce(query, 500);
-  const { mangaList } = useMangaSearch(debounceQuery);
+  const { isLoading, mangaList } = useMangaSearch(debounceQuery);
 
   function resetModal() {
     setSearchOpen(false);
@@ -36,6 +36,7 @@ function Header() {
         query={query}
         setQuery={setQuery}
         mangaList={mangaList}
+        isLoading={isLoading}
       />
     </>
   );

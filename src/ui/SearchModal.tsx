@@ -5,6 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import type { MangaData } from "../types/manga";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 type SearchModalProps = {
   query: string;
@@ -12,6 +13,7 @@ type SearchModalProps = {
   mangaList: MangaData[];
   isOpen: boolean;
   onClose: () => void;
+  isLoading: boolean;
 };
 
 function SearchModal({
@@ -20,6 +22,7 @@ function SearchModal({
   mangaList,
   isOpen,
   onClose,
+  isLoading,
 }: SearchModalProps) {
   useEffect(() => {
     if (isOpen) {
@@ -42,14 +45,14 @@ function SearchModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 py-10"
+        className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 py-8"
         onClick={onClose}
       >
         <motion.div
           initial={{ opacity: 0, scaleY: 0 }}
           animate={{ opacity: 1, scaleY: 1 }}
           exit={{ opacity: 0, scaleY: 0 }}
-          className="relative mx-2 w-full max-w-md rounded-md bg-neutral-900 p-6 md:mx-0 md:max-w-xl lg:max-w-3xl"
+          className="relative mx-2 w-full max-w-md rounded-md bg-neutral-900 px-6 py-4 md:mx-0 md:max-w-xl lg:max-w-3xl"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex w-full flex-col items-start bg-neutral-800 p-4">
@@ -71,29 +74,42 @@ function SearchModal({
               </div>
             )}
             <ul className="mt-4 max-h-[60vh] w-full overflow-y-auto border-t-1 border-white py-2">
-              {mangaList && mangaList.length > 0 ? (
-                mangaList.map((manga: MangaData) => (
-                  <li key={manga.mal_id}>
-                    <Link
-                      to={`/detail/${manga.mal_id}`}
-                      onClick={onClose}
-                      className="flex cursor-pointer items-center space-x-4 border-b border-neutral-700 px-2 py-3 font-light transition-colors duration-300 hover:bg-green-600"
-                    >
-                      <img
-                        src={manga.images.webp.image_url}
-                        alt={manga.title}
-                        className="h-16 w-16 rounded-sm object-cover"
-                      />
-                      <span className="text-white">{manga.title}</span>
-                    </Link>
-                  </li>
-                ))
-              ) : query.length > 0 ? (
-                <p className="mt-2 text-white">No results found.</p>
+              {!isLoading ? (
+                mangaList && mangaList.length > 0 ? (
+                  mangaList.map((manga: MangaData) => (
+                    <li key={manga.mal_id}>
+                      <Link
+                        to={`/detail/${manga.mal_id}`}
+                        onClick={onClose}
+                        className="flex cursor-pointer items-center space-x-4 border-b border-neutral-700 px-2 py-3 font-light transition-colors duration-300 hover:bg-green-600"
+                      >
+                        <img
+                          src={manga.images.webp.image_url}
+                          alt={manga.title}
+                          className="h-16 w-16 rounded-sm object-cover"
+                        />
+                        <span className="text-white">{manga.title}</span>
+                      </Link>
+                    </li>
+                  ))
+                ) : query.length > 0 ? (
+                  <p className="mt-2 text-white">No results found.</p>
+                ) : (
+                  <p className="text-white">Type something for search...</p>
+                )
               ) : (
-                <p className="text-white">Type something for search...</p>
+                <p className="text-white">Loading...</p>
               )}
             </ul>
+          </div>
+          <div className="mt-2 flex items-center justify-center">
+            <Link
+              to={`/search?q=${query}`}
+              className="flex w-fit cursor-pointer items-center rounded-sm bg-linear-to-r from-green-500 to-emerald-500 px-4 py-1 text-base font-bold text-gray-200 transition-all duration-300 hover:scale-105 md:text-lg"
+            >
+              View All Results
+              <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6" />
+            </Link>
           </div>
         </motion.div>
       </motion.div>
