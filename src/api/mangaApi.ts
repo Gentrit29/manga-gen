@@ -104,9 +104,9 @@ export const getAllMangaGenres = async () => {
   return json.data;
 };
 
-export const getMangaSearch = async (query: string) => {
+export const getMangaSearch = async (query: string, page: number = 1) => {
   const res = await fetch(
-    `${JIKAN_API_URL}/manga?q=${query}&sfw&genres_exclude=49,65`,
+    `${JIKAN_API_URL}/manga?q=${query}&sfw&genres_exclude=49,65&page=${page}`,
   );
   if (!res.ok) {
     throw new Error("Failed to fetch manga by query");
@@ -117,7 +117,7 @@ export const getMangaSearch = async (query: string) => {
     throw new Error("Failed to fetch data | no manga found ");
   }
 
-  return json.data;
+  return { data: json.data, pagination: json.pagination };
 };
 
 export const getMangaFullById = async (id: number) => {
