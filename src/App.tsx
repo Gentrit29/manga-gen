@@ -10,6 +10,7 @@ import Genre from "./pages/Genre";
 import Genres from "./pages/Genres";
 import Search from "./pages/Search";
 import ScrollToTop from "./components/ScrollToTop";
+import PageNotFound from "./pages/PageNotFound";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +38,7 @@ function App() {
               <Route path="/top/:category" element={<Top />} />
               <Route path="/search" element={<Search />} />
             </Route>
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>
