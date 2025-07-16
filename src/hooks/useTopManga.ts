@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTopManga } from "../api/mangaApi";
+import type { Route } from "../types/manga";
 
-export function useTopManga(category: string, page: number, type?: string) {
+export function useTopManga(category: Route, page: number, type?: string) {
   const {
     isLoading,
     error,
