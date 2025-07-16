@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { useTopManga } from "../../hooks/useTopManga";
 
 import { getTopLabel } from "../../utils/labels";
+import { routeMap } from "../../utils/routing";
 
 import TopHeaderSection from "./TopHeaderSection";
 import TopContentSection from "./TopContentSection";
@@ -20,10 +21,14 @@ function Top() {
   const { category } = useParams();
   const [nextPage, setNextPage] = useState(1);
   const [selectedTab, setSelectedTab] = useState("manga");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!category || !(category in routeMap)) {
+      navigate("/top/manga", { replace: true });
+    }
     setNextPage(1);
-  }, [category, selectedTab]);
+  }, [category, navigate]);
 
   const { isLoading, topManga } = useTopManga(
     category || "manga",
