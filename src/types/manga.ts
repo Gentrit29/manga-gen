@@ -80,3 +80,14 @@ export type MangaCharacter = {
     name: string;
   };
 };
+
+export type Route =
+  | "manga"
+  | "publishing"
+  | "upcoming"
+  | "bypopularity"
+  | "favorite";
+
+export type Params = {
+  params: (type: string) => string;
+};
