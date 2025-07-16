@@ -1,3 +1,5 @@
+import type { Route } from "../types/manga";
+
 type Tab = {
   label: string;
   value: string;
@@ -6,7 +8,7 @@ type Tab = {
 type MangaTabsProps = {
   tabs: Tab[];
   selectedTab: string;
-  onSelectTab: (tab: string) => void;
+  onSelectTab: (tab: Route) => void;
 };
 
 function MangaTabs({ tabs, selectedTab, onSelectTab }: MangaTabsProps) {
@@ -21,7 +23,7 @@ function MangaTabs({ tabs, selectedTab, onSelectTab }: MangaTabsProps) {
                 : "hover: border-gray-200 text-gray-400 hover:border-b-1 hover:text-white"
             }`}
             key={tab.value}
-            onClick={() => onSelectTab(tab.value)}
+            onClick={() => onSelectTab(tab.value as Route)}
           >
             {tab.label}
           </button>
@@ -30,7 +32,7 @@ function MangaTabs({ tabs, selectedTab, onSelectTab }: MangaTabsProps) {
       <div className="w-full md:hidden">
         <select
           className="mt-3 w-full rounded-sm border-1 border-gray-400 text-lg text-white"
-          onChange={(e) => onSelectTab(e.target.value)}
+          onChange={(e) => onSelectTab(e.target.value as Route)}
         >
           {tabs.map((tab) => (
             <option

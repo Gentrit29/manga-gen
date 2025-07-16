@@ -8,6 +8,7 @@ import { routeMap } from "../../utils/routing";
 
 import TopHeaderSection from "./TopHeaderSection";
 import TopContentSection from "./TopContentSection";
+import { type Route } from "../../types/manga";
 
 const tabs = [
   { label: "Manga", value: "manga" },
@@ -18,7 +19,7 @@ const tabs = [
 ];
 
 function Top() {
-  const { category } = useParams();
+  const { category } = useParams<{ category?: Route }>();
   const [nextPage, setNextPage] = useState(1);
   const [selectedTab, setSelectedTab] = useState("manga");
   const navigate = useNavigate();

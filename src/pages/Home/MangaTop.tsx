@@ -7,6 +7,7 @@ import { useTopManga } from "../../hooks/useTopManga";
 import MangaGrid from "../../ui/MangaGrid";
 import MangaTabs from "../../ui/MangaTabs";
 import SkeletonGrid from "../../ui/SkeletonGrid";
+import { type Route } from "../../types/manga";
 
 const tabs = [
   { label: "All", value: "manga" },
@@ -17,7 +18,7 @@ const tabs = [
 ];
 
 function MangaTop() {
-  const [selectedTab, setSelectedTab] = useState("manga");
+  const [selectedTab, setSelectedTab] = useState<Route>("manga");
 
   const { isLoading, topManga } = useTopManga(selectedTab, 1, "manga");
 
