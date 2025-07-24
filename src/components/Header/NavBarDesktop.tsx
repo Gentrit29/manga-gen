@@ -32,7 +32,7 @@ function NavBarDesktop({
           <IoSearch className="h-6 w-6" />
         </button>
         <a
-          href="github.com/Gentrit29"
+          href="https://github.com/Gentrit29/manga-gen"
           target="_blank"
           aria-label="Go to github repository"
         >

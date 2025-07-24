@@ -25,7 +25,7 @@ function AboutSection() {
         </p>
         <div className="mt-6 flex justify-center gap-6">
           <a
-            href="github.com/Gentrit29"
+            href="https://github.com/Gentrit29/manga-gen"
             target="_blank"
             aria-label="Go to github repository"
           >

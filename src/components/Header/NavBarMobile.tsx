@@ -88,7 +88,7 @@ function NavBarMobile({
               </ul>
               <div className="mt-auto">
                 <a
-                  href="https://github.com/Gentrit29"
+                  href="https://github.com/Gentrit29/manga-gen"
                   target="_blank"
                   aria-label="Go to github repository"
                   className="flex items-center space-x-2 text-lg"
