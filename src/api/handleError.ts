@@ -6,9 +6,6 @@ export async function handleError(url: string, errorMessage: string) {
     }
 
     const json = await res.json();
-    if (!json?.data || json.data.length === 0) {
-      throw new Error(errorMessage || "No data found");
-    }
 
     return json;
   } catch (err) {
