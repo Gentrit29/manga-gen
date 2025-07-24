@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Manga } from "../../types/manga";
 
 import MangaGrid from "../../ui/MangaGrid";
@@ -22,6 +23,10 @@ function TopContentSection({
   setNextPage,
   tabs,
 }: TopContentSectionProps) {
+  useEffect(() => {
+    setNextPage(1);
+  }, [selectedTab, setNextPage]);
+
   if (isLoading) return <SkeletonGrid elements={25} />;
 
   return (
