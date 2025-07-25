@@ -15,6 +15,14 @@ import PageNotFound from "./pages/PageNotFound";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      retry(failureCount, error) {
+        if (failureCount >= 5) {
+          console.log(error);
+          return false;
+        }
+        return true;
+      }, //Retry method to handle API rate limits (max 5 attemps)
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000), //Retry delay, max of 30 seconds: 1s, 2s, 4s, 8s, 16s => 5 attempts
       staleTime: 60 * 60 * 24 * 1000, //24h - sync with Jikan API caching system
       refetchOnWindowFocus: false,
       refetchOnMount: false,
