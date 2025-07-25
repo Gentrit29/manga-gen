@@ -1,15 +1,12 @@
+type ErrorWithStatus = Error & { status?: number };
+
 export async function handleError(url: string, errorMessage: string) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(errorMessage || "An error has occurred");
-    }
-
-    const json = await res.json();
-
-    return json;
-  } catch (err) {
-    console.error(err);
-    throw new Error(errorMessage || "An error has occurred");
+  const res = await fetch(url);
+  if (!res.ok) {
+    const error = new Error(errorMessage);
+    (error as ErrorWithStatus).status = res.status;
+    throw error;
   }
+
+  return res.json();
 }
