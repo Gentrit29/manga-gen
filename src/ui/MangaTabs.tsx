@@ -1,4 +1,5 @@
 import type { Route } from "../types/manga";
+import CustomSelect from "./CustomSelect";
 
 type Tab = {
   label: string;
@@ -30,20 +31,11 @@ function MangaTabs({ tabs, selectedTab, onSelectTab }: MangaTabsProps) {
         ))}
       </div>
       <div className="w-full md:hidden">
-        <select
-          className="mt-3 w-full rounded-sm border-1 border-gray-400 text-lg text-white"
-          onChange={(e) => onSelectTab(e.target.value as Route)}
-        >
-          {tabs.map((tab) => (
-            <option
-              className="bg-neutral-900"
-              key={tab.value}
-              value={tab.value}
-            >
-              {tab.label}
-            </option>
-          ))}
-        </select>
+        <CustomSelect
+          selectedTab={selectedTab}
+          tabs={tabs}
+          onSelectTab={onSelectTab}
+        />
       </div>
     </>
   );
