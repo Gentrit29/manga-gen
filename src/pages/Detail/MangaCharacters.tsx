@@ -26,16 +26,14 @@ function MangaCharacters({ params, isLoading }: MangaCharacterProps) {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {params?.slice(0, 25).map((manga: MangaCharacter, idx: number) => (
             <motion.div
+              key={manga.character.mal_id}
               initial="hidden"
               whileInView="visible"
               variants={animation}
               custom={idx}
               viewport={{ once: true, amount: 0 }}
             >
-              <MangaCharacterCard
-                key={manga.character.mal_id}
-                character={manga}
-              />
+              <MangaCharacterCard character={manga} />
             </motion.div>
           ))}
         </div>
