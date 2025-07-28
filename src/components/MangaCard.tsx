@@ -18,13 +18,14 @@ function MangaCard({ manga, index }: MangaCardProps) {
         <img
           className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
           src={manga.images.webp.image_url}
+          alt={manga.title}
         />
         <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute inset-3 flex flex-col justify-between">
           <div className="flex justify-between">
-            <h3 className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
+            <span className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
               #{index + 1}
-            </h3>
+            </span>
             {manga.score && (
               <div className="flex w-fit items-center space-x-1 rounded-lg bg-gradient-to-r from-yellow-500/70 to-orange-500/70 px-1 py-2 text-lg font-semibold text-white">
                 <FaStar />
@@ -32,10 +33,12 @@ function MangaCard({ manga, index }: MangaCardProps) {
               </div>
             )}
           </div>
-          <h3 className="font-light text-white">{manga.title}</h3>
+          <h2 className="font-light text-white">{manga.title}</h2>
         </div>
         <div className="absolute inset-0 z-10 h-full rounded-lg bg-neutral-900/90 p-2 text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
-          <h3 className="line-clamp-2 text-lg font-semibold">{manga.title}</h3>
+          <div className="line-clamp-2 text-lg font-semibold">
+            {manga.title}
+          </div>
           <div className="mt-2 mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-400">
             <span className="rounded bg-neutral-800 px-2 py-1">
               {manga.type}

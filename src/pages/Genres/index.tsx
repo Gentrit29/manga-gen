@@ -6,8 +6,6 @@ import GenresContentSection from "./GenresContentSection";
 function Genres() {
   const { isLoading, allMangaGenres } = useAllMangaGenres();
 
-  // if (error) return null;
-
   return (
     <section className="layout space-y-10">
       <GenresHeaderSection />
