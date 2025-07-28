@@ -8,7 +8,8 @@ export const routeMap: Record<Route, Params> = {
     params: (type: string) => `&type=${type}&status=publishing&sort=desc`,
   },
   upcoming: {
-    params: (type: string) => `&type=${type}&status=upcoming&sort=asc`,
+    params: (type: string) =>
+      `&unapproved&type=${type}&status=upcoming&sort=asc`,
   },
   bypopularity: {
     params: (type: string) => `&order_by=popularity&type=${type}`,
