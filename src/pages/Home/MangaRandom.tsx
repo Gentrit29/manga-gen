@@ -18,8 +18,6 @@ function MangaRandom() {
   const isMobile = useMediaQuery({ maxWidth: 1280 });
   const { isLoading, isFetching, refetch, randomManga } = useRandomManga();
 
-  // if (error) return null;
-
   const loadingSkeleton = isMobile ? (
     <MangaRandomSkeletonMobile />
   ) : (
@@ -27,7 +25,7 @@ function MangaRandom() {
   );
 
   return (
-    <section className="mx-5 mt-15 space-y-4 lg:mx-20 2xl:mx-40">
+    <section className="layout space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2 md:space-x-4">
           <div className="h-10 w-1.5 rounded-sm bg-green-500" />
