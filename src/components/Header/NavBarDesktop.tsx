@@ -34,6 +34,7 @@ function NavBarDesktop({
         <a
           href="https://github.com/Gentrit29/manga-gen"
           target="_blank"
+          rel="noreferrer noopener"
           aria-label="Go to github repository"
         >
           <IoLogoGithub className="h-6 w-6" />

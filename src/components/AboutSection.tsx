@@ -18,6 +18,7 @@ function AboutSection() {
           <a
             href="https://jikan.moe/"
             target="_blank"
+            rel="noreferrer noopener"
             aria-label="Go to Jikan API page"
           >
             <span className="font-bold text-green-500">Jikan API.</span>
@@ -27,6 +28,7 @@ function AboutSection() {
           <a
             href="https://github.com/Gentrit29/manga-gen"
             target="_blank"
+            rel="noreferrer noopener"
             aria-label="Go to github repository"
           >
             <IoLogoGithub className="h-8 w-8" />

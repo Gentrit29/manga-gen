@@ -90,6 +90,7 @@ function NavBarMobile({
                 <a
                   href="https://github.com/Gentrit29/manga-gen"
                   target="_blank"
+                  rel="noreferrer noopener"
                   aria-label="Go to github repository"
                   className="flex items-center space-x-2 text-lg"
                 >
