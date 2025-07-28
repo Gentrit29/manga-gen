@@ -11,7 +11,9 @@ function NavBarDesktop({
 }) {
   return (
     <nav className="flex h-full items-center space-x-10 text-white">
-      <h1 className="cursor-pointer text-2xl font-bold">Manga GEN</h1>
+      <NavLink to="/home" className="cursor-pointer text-2xl font-bold">
+        Manga GEN
+      </NavLink>
       <ul className="flex space-x-4 text-lg font-light">
         <li className="transition-colors duration-300 hover:text-green-500">
           <NavLink
