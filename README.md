@@ -4,7 +4,7 @@ Manga GEN is website built to simplify manga discovery and exploration. It helps
 
 ## Screenshots
 
-![App Screenshot](/mangagen.PNG)
+![App Screenshot](/public/mangagen.PNG)
 
 ## Tech Stack
 
