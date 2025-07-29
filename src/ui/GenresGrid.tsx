@@ -11,7 +11,7 @@ function GenresGrid({ mangaGenres }: { mangaGenres: Genre[] }) {
   const animation = useGridAnimation(6);
   return (
     <div className="mt-10 grid grid-cols-2 place-items-center gap-2 text-white sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-      {mangaGenres.map((genre: Genre, idx: number) => (
+      {mangaGenres?.map((genre: Genre, idx: number) => (
         <motion.div
           key={genre.mal_id}
           custom={idx}

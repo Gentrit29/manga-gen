@@ -26,7 +26,7 @@ function MangaSlider() {
         delay: 6000,
       }}
     >
-      {top5Manga.map((manga: MangaSlide) => (
+      {top5Manga?.map((manga: MangaSlide) => (
         <SwiperSlide key={manga.mal_id}>
           <div className="relative h-[500px] max-h-[500px] overflow-hidden">
             <div
