@@ -93,7 +93,7 @@ export const getMangaCharacters = async (id: number) => {
 };
 
 export const getMangaSearchByGenre = async (genres: number, page = 1) => {
-  const url = `${JIKAN_API_URL}/manga?genres=${genres}&sfw&page=${page}`;
+  const url = `${JIKAN_API_URL}/manga?genres=${genres}&sfw&genres_exclude=49,65&page=${page}`;
 
   const json = await handleError(url, `Failed to fetch manga by genre: ${url}`);
 
