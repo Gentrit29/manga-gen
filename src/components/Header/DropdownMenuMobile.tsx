@@ -6,7 +6,11 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-function DropdownMenuMobile() {
+function DropdownMenuMobile({
+  setSidebarOpen,
+}: {
+  setSidebarOpen: (value: boolean) => void;
+}) {
   const [open, isOpen] = useState(false);
 
   return (
@@ -39,6 +43,7 @@ function DropdownMenuMobile() {
                     : "block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"
                 }
                 to="/top/manga"
+                onClick={() => setSidebarOpen(false)}
               >
                 Top Manga
               </NavLink>
@@ -49,6 +54,7 @@ function DropdownMenuMobile() {
                     : "block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"
                 }
                 to="/top/publishing"
+                onClick={() => setSidebarOpen(false)}
               >
                 Top Publishing
               </NavLink>
@@ -59,6 +65,7 @@ function DropdownMenuMobile() {
                     : "block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"
                 }
                 to="/top/upcoming"
+                onClick={() => setSidebarOpen(false)}
               >
                 Top Upcoming
               </NavLink>
@@ -69,12 +76,14 @@ function DropdownMenuMobile() {
                     : "block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"
                 }
                 to="/top/bypopularity"
+                onClick={() => setSidebarOpen(false)}
               >
                 Most Popular
               </NavLink>
               <NavLink
                 className="block rounded-md px-1.5 py-0.5 focus:bg-green-500 active:bg-green-500"
                 to="/top/favorite"
+                onClick={() => setSidebarOpen(false)}
               >
                 Most Favorited
               </NavLink>

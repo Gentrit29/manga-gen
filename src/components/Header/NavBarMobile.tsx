@@ -84,7 +84,7 @@ function NavBarMobile({
                     Home
                   </NavLink>
                 </li>
-                <DropdownMenuMobile />
+                <DropdownMenuMobile setSidebarOpen={setSidebarOpen} />
               </ul>
               <div className="mt-auto">
                 <a
