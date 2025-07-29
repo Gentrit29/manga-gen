@@ -29,7 +29,7 @@ function MangaRecommendations({
       {isLoading ? (
         <SkeletonGrid elements={10} />
       ) : params && params.length > 0 ? (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
           {params.slice(0, 10).map(({ entry }, idx) => (
             <motion.div
               key={entry.mal_id}
@@ -44,7 +44,7 @@ function MangaRecommendations({
               >
                 <div className="group relative w-full">
                   <img
-                    className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
+                    className="h-60 w-full rounded-lg object-cover brightness-90 sm:h-72 2xl:h-96"
                     src={entry.images.webp.image_url}
                     alt={entry.title}
                   />

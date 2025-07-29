@@ -23,7 +23,7 @@ function MangaCharacters({ params, isLoading }: MangaCharacterProps) {
       {isLoading ? (
         <SkeletonGrid elements={25} />
       ) : params && params.length > 0 ? (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
           {params?.slice(0, 25).map((manga: MangaCharacter, idx: number) => (
             <motion.div
               key={manga.character.mal_id}

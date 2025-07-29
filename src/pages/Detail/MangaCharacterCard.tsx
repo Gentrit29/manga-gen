@@ -8,7 +8,7 @@ function MangaCharacterCard({ character }: MangaCharacterCardProps) {
   return (
     <div className="group relative w-full">
       <img
-        className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
+        className="h-60 w-full rounded-lg object-cover brightness-90 sm:h-72 2xl:h-96"
         src={character.character.images.webp.image_url}
         alt={character.character.name}
       />

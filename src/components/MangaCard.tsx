@@ -25,7 +25,7 @@ function MangaCard({
           src={manga.images.webp.image_url}
           alt={manga.title}
         />
-        <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent md:h-48" />
         <div className="absolute inset-3 flex flex-col justify-between">
           <div className="flex justify-between text-base sm:text-lg">
             <span className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 font-light text-white">
@@ -38,7 +38,9 @@ function MangaCard({
               </div>
             )}
           </div>
-          <h2 className="font-light text-white">{manga.title}</h2>
+          <h2 className="line-clamp-2 font-light text-white md:line-clamp-none">
+            {manga.title}
+          </h2>
         </div>
         <div className="absolute inset-0 z-10 h-full rounded-lg bg-neutral-900/90 p-2 text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
           <div className="line-clamp-2 text-lg font-semibold">
