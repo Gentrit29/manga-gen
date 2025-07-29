@@ -11,7 +11,7 @@ type MangaGridProps = {
 function MangaGrid({ manga }: MangaGridProps) {
   const animation = useGridAnimation();
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
       {manga?.map((manga: MangaData, idx: number) => (
         <motion.div
           key={manga.mal_id}

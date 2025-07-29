@@ -59,7 +59,7 @@ function MangaRandom() {
         >
           {randomManga?.map((manga: MangaData, idx: number) => (
             <SwiperSlide key={manga.mal_id} className="!w-[240px]">
-              <MangaCard manga={manga} index={idx} />
+              <MangaCard manga={manga} index={idx} customHeight="h-80" />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -23,7 +23,7 @@ function GenresGrid({ mangaGenres }: { mangaGenres: Genre[] }) {
           <Link
             to={`/genre/${genre.mal_id}?name=${formatNameForUrl(genre.name)}`}
           >
-            <div className="w-30 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500 md:w-40">
+            <div className="w-34 rounded-sm border-1 border-green-500 p-1 transition-colors duration-300 hover:bg-green-500 md:w-40">
               <span>{genre.name}</span>
             </div>
           </Link>

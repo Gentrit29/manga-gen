@@ -9,25 +9,30 @@ import { formatNameForUrl } from "../utils/formatters";
 type MangaCardProps = {
   manga: MangaData;
   index: number;
+  customHeight?: string;
 };
 
-function MangaCard({ manga, index }: MangaCardProps) {
+function MangaCard({
+  manga,
+  index,
+  customHeight = "h-60 sm:h-72 2xl:h-96",
+}: MangaCardProps) {
   return (
     <Link to={`/detail/${manga.mal_id}?title=${formatNameForUrl(manga.title)}`}>
       <div className="group relative">
         <img
-          className="h-72 w-full rounded-lg object-cover brightness-90 2xl:h-96"
+          className={`${customHeight} w-full rounded-lg object-cover brightness-90`}
           src={manga.images.webp.image_url}
           alt={manga.title}
         />
         <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute inset-3 flex flex-col justify-between">
-          <div className="flex justify-between">
-            <span className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 text-lg font-light text-white">
+          <div className="flex justify-between text-base sm:text-lg">
+            <span className="w-fit rounded-lg bg-gradient-to-r from-green-500/70 to-emerald-500/70 px-1 py-2 font-light text-white">
               #{index + 1}
             </span>
             {manga.score && (
-              <div className="flex w-fit items-center space-x-1 rounded-lg bg-gradient-to-r from-yellow-500/70 to-orange-500/70 px-1 py-2 text-lg font-semibold text-white">
+              <div className="flex w-fit items-center space-x-1 rounded-lg bg-gradient-to-r from-yellow-500/70 to-orange-500/70 px-1 py-2 font-semibold text-white">
                 <FaStar />
                 <span>{manga.score}</span>
               </div>
