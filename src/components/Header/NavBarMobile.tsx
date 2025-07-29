@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 import { IoLogoGithub, IoSearch } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
@@ -31,7 +31,9 @@ function NavBarMobile({
   return (
     <>
       <nav className="relative flex h-full items-center space-x-10 text-white">
-        <h1 className="cursor-pointer text-2xl font-bold">Manga GEN</h1>
+        <Link to="/home" className="cursor-pointer text-2xl font-bold">
+          Manga GEN
+        </Link>
         <div className="ml-auto flex items-center space-x-4 text-lg font-light">
           <button
             className="ml-auto flex cursor-pointer items-center font-light"

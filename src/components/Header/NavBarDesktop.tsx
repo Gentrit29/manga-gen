@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 import { IoLogoGithub, IoSearch } from "react-icons/io5";
 
@@ -11,9 +11,9 @@ function NavBarDesktop({
 }) {
   return (
     <nav className="flex h-full items-center space-x-10 text-white">
-      <NavLink to="/home" className="cursor-pointer text-2xl font-bold">
+      <Link to="/home" className="cursor-pointer text-2xl font-bold">
         Manga GEN
-      </NavLink>
+      </Link>
       <ul className="flex space-x-4 text-lg font-light">
         <li className="transition-colors duration-300 hover:text-green-500">
           <NavLink
