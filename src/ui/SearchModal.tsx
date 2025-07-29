@@ -80,7 +80,7 @@ function SearchModal({
                   mangaList.map((manga: MangaData) => (
                     <li key={manga.mal_id}>
                       <Link
-                        to={`/detail/${manga.mal_id}`}
+                        to={`/detail/${manga.mal_id}?title=${formatNameForUrl(manga.title)}`}
                         onClick={onClose}
                         className="flex cursor-pointer items-center space-x-4 border-b border-neutral-700 px-2 py-3 font-light transition-colors duration-300 hover:bg-green-600"
                       >
