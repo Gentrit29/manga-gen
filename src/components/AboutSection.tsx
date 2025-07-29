@@ -2,19 +2,20 @@ import { IoLogoGithub } from "react-icons/io5";
 
 function AboutSection() {
   return (
-    <section
-      className="layout relative bg-cover bg-center bg-no-repeat py-20 text-white brightness-110"
-      style={{
-        backgroundImage: 'url("/about-section/aboutsectionbanner.jpg")',
-      }}
-    >
+    <section className="layout relative py-20 text-white">
+      <div
+        className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat brightness-80"
+        style={{
+          backgroundImage: 'url("/about-section/aboutsectionbanner.jpg")',
+        }}
+      />
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900" />
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <h2 className="mb-10 text-2xl font-bold md:text-3xl">Manga GEN</h2>
         <p className="px-5 text-sm md:text-lg">
-          Discover everything about manga and more — search, explore top
+          Discover everything about manga and more - search, explore top
           recommendations, check out community favorites from MyAnimeList, and
-          much more — all in one place. This website is powered by the{" "}
+          much more - all in one place. This website is powered by the{" "}
           <a
             href="https://jikan.moe/"
             target="_blank"
