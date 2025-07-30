@@ -65,20 +65,3 @@ function CustomSelect({ selectedTab, tabs, onSelectTab }: CustomSelectProps) {
 }
 
 export default CustomSelect;
-
-{
-  /* <select
-          className="mt-3 w-full rounded-sm border-1 border-gray-400 text-lg text-white"
-          onChange={(e) => onSelectTab(e.target.value as Route)}
-        >
-          {tabs.map((tab) => (
-            <option
-              className="bg-neutral-900"
-              key={tab.value}
-              value={tab.value}
-            >
-              {tab.label}
-            </option>
-          ))}
-        </select> */
-}
