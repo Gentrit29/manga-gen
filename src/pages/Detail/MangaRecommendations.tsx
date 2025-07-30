@@ -47,6 +47,7 @@ function MangaRecommendations({
                     className="h-60 w-full rounded-lg object-cover brightness-90 sm:h-72 2xl:h-96"
                     src={entry.images.webp.image_url}
                     alt={entry.title}
+                    loading="lazy"
                   />
                   <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute inset-3 flex flex-col justify-between">

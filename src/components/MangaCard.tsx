@@ -24,6 +24,7 @@ function MangaCard({
           className={`${customHeight} w-full rounded-lg object-cover brightness-90`}
           src={manga.images.webp.image_url}
           alt={manga.title}
+          loading="lazy"
         />
         <div className="absolute right-0 bottom-0 left-0 h-32 rounded-b-lg bg-gradient-to-t from-black/70 to-transparent md:h-48" />
         <div className="absolute inset-3 flex flex-col justify-between">
