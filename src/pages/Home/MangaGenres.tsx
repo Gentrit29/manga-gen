@@ -25,7 +25,7 @@ function MangaGenres() {
         />
       ) : (
         <>
-          <GenresGrid mangaGenres={mangaGenres} />
+          <GenresGrid mangaGenres={mangaGenres!} />
           <div className="flex items-center justify-center">
             <Link
               to="/genres"
