@@ -38,14 +38,6 @@ export const getTopManga = async (
   return { data: json.data, pagination: json.pagination };
 };
 
-export const getMangaGenres = async () => {
-  const url = `${JIKAN_API_URL}/genres/manga?filter=genres`;
-
-  const json = await handleError(url, `Failed to fetch manga genres: ${url}`);
-
-  return json.data;
-};
-
 export const getAllMangaGenres = async () => {
   const url = `${JIKAN_API_URL}/genres/manga`;
 
