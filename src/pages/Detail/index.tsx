@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 import MangaHeader from "./MangaHeader";
 import MangaRecommendations from "./MangaRecommendations";
@@ -9,9 +9,17 @@ import AboutSection from "../../components/AboutSection";
 import { useMangaFullById } from "../../hooks/useMangaFullById";
 import { useMangaRecommendations } from "../../hooks/useMangaRecommendations";
 import { useMangaCharacters } from "../../hooks/useMangaCharacters";
+import { formatNameForDisplay } from "../../utils/formatters";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function Detail() {
   const { id } = useParams();
+
+  const { search } = useLocation();
+
+  const titleParam = new URLSearchParams(search).get("title");
+
+  const title = titleParam ? formatNameForDisplay(titleParam) : "";
 
   const { isLoading, error, mangaFull } = useMangaFullById(Number(id));
 
@@ -26,6 +34,8 @@ function Detail() {
     error: charactersError,
     mangaCharacters,
   } = useMangaCharacters(Number(id));
+
+  useDocumentTitle(`${title}`);
 
   if (error || recommendationsError || charactersError) return null;
 

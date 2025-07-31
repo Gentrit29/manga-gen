@@ -25,7 +25,7 @@ export function getTopLabel(category?: string, selectedTab = "manga") {
   if (category && NAV_LABELS[category]) {
     const base = NAV_LABELS[category];
     return {
-      label: `Top ${selectedTab.charAt(0).toUpperCase() + selectedTab.slice(1)}`,
+      label: base.label,
       desc: base.desc.replace("{selectedTab}", selectedTab),
     };
   }

@@ -7,6 +7,7 @@ import SearchContentSection from "./SearchContentSection";
 import { formatNameForDisplay } from "../../utils/formatters";
 
 import { useMangaSearch } from "../../hooks/useMangaSearch";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function Search() {
   const location = useLocation();
@@ -18,6 +19,8 @@ function Search() {
   const [nextPage, setNextPage] = useState(1);
 
   const { isLoading, mangaList } = useMangaSearch(queryName, nextPage);
+
+  useDocumentTitle(`Search | ${formattedName}`);
 
   return (
     <div className="layout space-y-4">

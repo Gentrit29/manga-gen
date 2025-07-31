@@ -7,19 +7,22 @@ import { formatNameForDisplay } from "../../utils/formatters";
 
 import GenreHeaderSection from "./GenreHeaderSection";
 import GenreContentSection from "./GenreContentSection";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function Genre() {
   const { id } = useParams();
 
-  const location = useLocation();
+  const { search } = useLocation();
 
-  const genreName = new URLSearchParams(location.search).get("name");
+  const genreName = new URLSearchParams(search).get("name");
 
   const formattedName = genreName ? formatNameForDisplay(genreName) : "";
 
   const [nextPage, setNextPage] = useState(1);
 
   const { isLoading, mangaList } = useMangaSearchByGenre(Number(id), nextPage);
+
+  useDocumentTitle(`Genre | ${formattedName}`);
 
   return (
     <div className="layout space-y-4">
