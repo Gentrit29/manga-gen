@@ -28,6 +28,7 @@ export type MangaData = {
   images: Images;
   title: string;
   title_japanese: string;
+  title_english: string;
   type: string;
   score: number;
   scored_by: number;
