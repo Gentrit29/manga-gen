@@ -20,12 +20,19 @@ function MangaHeader({ params, isLoading }: MangaHeaderProps) {
       />
       <section className="relative z-10 flex flex-col items-center px-5 lg:items-start lg:px-20 xl:flex-row xl:space-x-8 2xl:px-40">
         <img
-          src={params.images.webp.image_url}
-          alt={params.title}
+          src={params.images.webp.large_image_url}
+          alt={params.title_english}
           className="h-70 w-60 rounded-lg md:h-80"
         />
         <div className="mt-4 flex flex-col space-y-2 xl:mt-0">
-          <h1 className="text-4xl font-bold text-white">{params.title}</h1>
+          <h1 className="text-4xl font-bold text-white">
+            {params.title_english}
+          </h1>
+          {params.title !== params.title_english && (
+            <h2 className="text-lg font-light text-white md:text-xl">
+              ({params.title})
+            </h2>
+          )}
           <div className="flex flex-wrap items-center gap-2 text-base font-light text-white">
             <span className="rounded bg-linear-to-r from-green-500 to-emerald-500 px-2 py-1">
               {params.type}
