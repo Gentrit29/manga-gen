@@ -83,18 +83,18 @@ function SearchModal({
                         <Link
                           to={`/detail/${manga.mal_id}?title=${formatNameForUrl(manga.title)}`}
                           onClick={onClose}
-                          className="flex cursor-pointer items-center space-x-4 border-b border-neutral-700 px-2 py-3 font-light transition-colors duration-300 hover:bg-green-600"
+                          className="flex cursor-pointer items-center space-x-3 border-b border-neutral-700 py-2 font-light transition-colors duration-300 hover:bg-green-600"
                         >
                           <img
                             src={manga.images.webp.large_image_url}
                             alt={manga.title}
-                            className="h-16 w-16 rounded-sm object-cover"
+                            className="h-auto w-16 shrink-0 rounded-sm object-contain"
                           />
-                          <span className="text-white">
-                            {manga.title_english
-                              ? manga.title_english
-                              : manga.title}
-                          </span>
+                          <div className="w-full">
+                            <span className="line-clamp-3 text-white">
+                              {manga.title_english || manga.title}
+                            </span>
+                          </div>
                         </Link>
                       </li>
                     ))
