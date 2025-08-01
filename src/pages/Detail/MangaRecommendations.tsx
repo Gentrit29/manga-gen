@@ -45,7 +45,7 @@ function MangaRecommendations({
                 <div className="group relative w-full">
                   <img
                     className="h-60 w-full rounded-lg object-cover brightness-90 sm:h-72 2xl:h-96"
-                    src={entry.images.webp.image_url}
+                    src={entry.images.webp.large_image_url}
                     alt={entry.title}
                     loading="lazy"
                   />

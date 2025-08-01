@@ -22,7 +22,7 @@ function MangaCard({
       <div className="group relative">
         <img
           className={`${customHeight} w-full rounded-lg object-cover brightness-90`}
-          src={manga.images.webp.image_url}
+          src={manga.images.webp.large_image_url}
           alt={manga.title}
           loading="lazy"
         />
