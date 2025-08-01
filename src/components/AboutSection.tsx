@@ -1,4 +1,5 @@
 import { IoLogoGithub } from "react-icons/io5";
+import SectionBanner from "/section-banner.webp";
 
 function AboutSection() {
   return (
@@ -6,7 +7,7 @@ function AboutSection() {
       <div
         className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat brightness-80"
         style={{
-          backgroundImage: 'url("/about-section/aboutsectionbanner.jpg")',
+          backgroundImage: `url(${SectionBanner})`,
         }}
       />
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900" />

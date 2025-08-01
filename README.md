@@ -2,7 +2,7 @@
 
 Manga GEN is website built to simplify manga discovery and exploration. It helps you find titles, browse by genres, track top trends and much more - all using real-time data from Jikan API.
 
-![App Screenshot](/public/mangagen.PNG)
+![App Screenshot](/public/manga-gen.png)
 
 ## Tech Stack
 

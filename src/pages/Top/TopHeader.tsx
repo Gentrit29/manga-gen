@@ -1,4 +1,5 @@
 import type { MangaData } from "../../types/manga";
+import SectionBanner from "/section-banner.webp";
 
 type TopHeaderProps = {
   label: string;
@@ -13,8 +14,7 @@ function TopHeader({ label, params, desc }: TopHeaderProps) {
         className="absolute inset-0 bg-cover bg-center blur-xs brightness-60"
         style={{
           backgroundImage: `url(${
-            params?.images?.webp?.image_url ||
-            "/about-section/aboutsectionbanner.jpg"
+            params?.images?.webp?.image_url || SectionBanner
           })`,
         }}
       />
