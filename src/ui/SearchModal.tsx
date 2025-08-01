@@ -85,11 +85,15 @@ function SearchModal({
                         className="flex cursor-pointer items-center space-x-4 border-b border-neutral-700 px-2 py-3 font-light transition-colors duration-300 hover:bg-green-600"
                       >
                         <img
-                          src={manga.images.webp.image_url}
+                          src={manga.images.webp.large_image_url}
                           alt={manga.title}
                           className="h-16 w-16 rounded-sm object-cover"
                         />
-                        <span className="text-white">{manga.title}</span>
+                        <span className="text-white">
+                          {manga.title_english
+                            ? manga.title_english
+                            : manga.title}
+                        </span>
                       </Link>
                     </li>
                   ))
