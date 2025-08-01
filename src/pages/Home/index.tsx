@@ -4,8 +4,10 @@ import MangaTop from "./MangaTop";
 import MangaGenres from "./MangaGenres";
 
 import AboutSection from "../../components/AboutSection";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function Home() {
+  useDocumentTitle("");
   return (
     <>
       <MangaSlider />

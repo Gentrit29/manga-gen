@@ -2,9 +2,12 @@ import { useAllMangaGenres } from "../../hooks/useAllMangaGenres";
 
 import GenresHeaderSection from "./GenresHeaderSection";
 import GenresContentSection from "./GenresContentSection";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function Genres() {
   const { isLoading, allMangaGenres } = useAllMangaGenres();
+
+  useDocumentTitle("All Genres - Manga GEN");
 
   return (
     <section className="layout space-y-10">

@@ -9,6 +9,7 @@ import { routeMap } from "../../utils/routing";
 import TopHeaderSection from "./TopHeaderSection";
 import TopContentSection from "./TopContentSection";
 import { type Route } from "../../types/manga";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const tabs = [
   { label: "Manga", value: "manga" },
@@ -38,6 +39,8 @@ function Top() {
   );
 
   const TOP_LABEL = getTopLabel(category, selectedTab);
+
+  useDocumentTitle(TOP_LABEL.label);
 
   return (
     <div className="layout mt-15 space-y-20">

@@ -1,6 +1,6 @@
 const NAV_LABELS: Record<string, { label: string; desc: string }> = {
   manga: {
-    label: "Top Manga",
+    label: "Top {selectedTab}",
     desc: `The highest-ranked {selectedTab} of all time`,
   },
   publishing: {
@@ -25,7 +25,10 @@ export function getTopLabel(category?: string, selectedTab = "manga") {
   if (category && NAV_LABELS[category]) {
     const base = NAV_LABELS[category];
     return {
-      label: base.label,
+      label: base.label.replace(
+        "{selectedTab}",
+        selectedTab.charAt(0).toUpperCase() + selectedTab.slice(1),
+      ),
       desc: base.desc.replace("{selectedTab}", selectedTab),
     };
   }

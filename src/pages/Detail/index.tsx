@@ -35,7 +35,7 @@ function Detail() {
     mangaCharacters,
   } = useMangaCharacters(Number(id));
 
-  useDocumentTitle(`${title}`);
+  useDocumentTitle(title);
 
   if (error || recommendationsError || charactersError) return null;
 

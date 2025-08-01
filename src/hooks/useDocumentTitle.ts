@@ -1,19 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-type titleMapConfig = Record<string, string> | string;
-
-export function useDocumentTitle(titleMap: titleMapConfig) {
+export function useDocumentTitle(title: string) {
   const { pathname } = useLocation();
   useEffect(() => {
-    let title = "Manga GEN - All about manga & more";
-
-    if (typeof titleMap === "string") {
-      title = titleMap;
-    } else if (typeof titleMap === "object") {
-      title = titleMap[pathname] || title;
+    if (pathname === "/home") {
+      document.title = "Manga GEN - All about manga & more.";
+    } else {
+      document.title = `${title} - Manga GEN`;
     }
-
-    document.title = `${title} - Manga GEN`;
-  }, [pathname, titleMap]);
+  }, [pathname, title]);
 }
