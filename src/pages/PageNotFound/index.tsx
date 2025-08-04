@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 function PageNotFound() {
+  useDocumentTitle("404: Page Not Found");
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="text-center">
