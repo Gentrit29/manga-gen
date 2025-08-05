@@ -38,9 +38,9 @@ function MangaCharacters({ params, isLoading }: MangaCharacterProps) {
           ))}
         </div>
       ) : (
-        <div className="mt-10 flex items-center justify-center">
-          <p className="text-2xl text-white">No characters available!</p>
-        </div>
+        <p className="mt-10 text-center text-2xl text-white">
+          No <span className="text-green-500">characters</span> available!
+        </p>
       )}
     </section>
   );
