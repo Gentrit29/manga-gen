@@ -5,11 +5,12 @@ export function useMangaFullById(id: number) {
   const {
     isLoading,
     error,
+    refetch,
     data: mangaFull,
   } = useQuery({
     queryKey: ["mangaFull", id],
     queryFn: () => getMangaFullById(id),
   });
 
-  return { isLoading, error, mangaFull };
+  return { isLoading, error, refetch, mangaFull };
 }
