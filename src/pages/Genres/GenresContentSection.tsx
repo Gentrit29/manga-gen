@@ -1,11 +1,8 @@
 import type { Genre } from "../../types/manga";
 
-import SkeletonGrid from "../../ui/SkeletonGrid";
-import {
-  filterExplicitGenre,
-  removeDuplicateGenresTag,
-} from "../../utils/helpers";
+import { filterExplicitGenre, removeDuplicates } from "../../utils/helpers";
 
+import SkeletonGrid from "../../ui/SkeletonGrid";
 import GenresGrid from "../../ui/GenresGrid";
 
 type GenresContentSectionProps = {
@@ -30,7 +27,7 @@ function GenresContentSection({
 
   const filterGenres: Genre[] = filterExplicitGenre(genres, filter);
 
-  const uniqueGenres = removeDuplicateGenresTag(filterGenres);
+  const uniqueGenres = removeDuplicates(filterGenres);
 
   return <GenresGrid mangaGenres={uniqueGenres} />;
 }
