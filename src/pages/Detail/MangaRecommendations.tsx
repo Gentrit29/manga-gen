@@ -58,9 +58,9 @@ function MangaRecommendations({
                     </div>
                     <h3 className="font-light text-white">{entry.title}</h3>
                   </div>
-                  <div className="absolute inset-0 z-10 h-full rounded-lg bg-neutral-900/80 p-2 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  <div className="absolute inset-0 z-10 h-full rounded-lg bg-neutral-900/60 p-2 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                     <div className="flex h-full items-center justify-center">
-                      <MdOutlineOpenInNew className="h-10 w-10" />
+                      <MdOutlineOpenInNew className="h-6 w-6 md:h-8 md:w-8" />
                     </div>
                   </div>
                 </div>
