@@ -81,7 +81,11 @@ function DropdownMenuMobile({
                 Most Popular
               </NavLink>
               <NavLink
-                className="block rounded-md px-1.5 py-0.5 focus:bg-green-500 active:bg-green-500"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block rounded-md bg-green-500 px-1.5 py-0.5"
+                    : "block rounded-md px-1.5 py-0.5 transition-colors duration-300 hover:bg-green-500"
+                }
                 to="/top/favorite"
                 onClick={() => setSidebarOpen(false)}
               >
