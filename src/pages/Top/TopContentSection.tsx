@@ -39,15 +39,22 @@ function TopContentSection({
       {manga?.data && manga.data.length > 0 ? (
         <>
           <MangaGrid manga={manga.data} />
-          <Pagination
-            currentPage={manga?.pagination.current_page}
-            firstPage={1}
-            lastPage={manga?.pagination.last_visible_page}
-            onPageChange={setNextPage}
-          />
+          {manga.pagination.last_visible_page > 1 && (
+            <Pagination
+              currentPage={manga?.pagination.current_page}
+              firstPage={1}
+              lastPage={manga?.pagination.last_visible_page}
+              onPageChange={setNextPage}
+            />
+          )}
         </>
       ) : (
-        <p className="text-center text-lg text-white">No results to display</p>
+        <div className="mt-10 flex items-center justify-center">
+          <p className="text-2xl text-white">
+            No results for <span className="text-green-500">{selectedTab}</span>
+            !
+          </p>
+        </div>
       )}
     </div>
   );
