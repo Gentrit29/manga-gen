@@ -1,10 +1,12 @@
 import type { Genre } from "../types/manga";
 
-export const removeDuplicateGenresTag = (genres: Genre[]) => {
-  const seen = new Set<string>();
-  return genres.filter((genre) => {
-    if (seen.has(genre.name)) return false;
-    seen.add(genre.name);
+export const removeDuplicates = <T extends { mal_id: number }>(
+  data: T[] = [],
+) => {
+  const seen = new Set<number>();
+  return data.filter((item) => {
+    if (seen.has(item.mal_id)) return false;
+    seen.add(item.mal_id);
     return true;
   });
 };
