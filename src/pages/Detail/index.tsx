@@ -12,6 +12,8 @@ import { useMangaCharacters } from "../../hooks/useMangaCharacters";
 import { formatNameForDisplay } from "../../utils/formatters";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
+import ErrorFallback from "../../ui/ErrorFallback";
+
 function Detail() {
   const { id } = useParams();
 
@@ -21,7 +23,7 @@ function Detail() {
 
   const title = titleParam ? formatNameForDisplay(titleParam) : "";
 
-  const { isLoading, error, mangaFull } = useMangaFullById(Number(id));
+  const { isLoading, error, refetch, mangaFull } = useMangaFullById(Number(id));
 
   const {
     isLoading: isRecommendationsLoading,
@@ -37,7 +39,8 @@ function Detail() {
 
   useDocumentTitle(title);
 
-  if (error || recommendationsError || charactersError) return null;
+  if (error || recommendationsError || charactersError)
+    return <ErrorFallback retry={refetch} />;
 
   return (
     <>
