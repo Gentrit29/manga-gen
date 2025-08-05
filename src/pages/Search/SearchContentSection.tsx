@@ -4,6 +4,8 @@ import SkeletonGrid from "../../ui/SkeletonGrid";
 import MangaGrid from "../../ui/MangaGrid";
 import Pagination from "../../ui/Pagination";
 
+import { removeDuplicates } from "../../utils/helpers";
+
 type SearchContentSectionProps = {
   isLoading: boolean;
   manga: Manga | undefined;
@@ -15,12 +17,14 @@ function SearchContentSection({
   manga,
   setNextPage,
 }: SearchContentSectionProps) {
+  const uniqueMangas = removeDuplicates(manga?.data);
+
   if (isLoading) return <SkeletonGrid elements={25} />;
 
   return (
     <>
-      {manga?.data && manga.data.length > 0 ? (
-        <MangaGrid manga={manga.data} />
+      {uniqueMangas && uniqueMangas.length > 0 ? (
+        <MangaGrid manga={uniqueMangas} />
       ) : (
         <p className="text-center text-lg text-white">No results to display</p>
       )}

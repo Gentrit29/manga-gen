@@ -7,6 +7,7 @@ import type { MangaData } from "../types/manga";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { formatNameForUrl } from "../utils/formatters";
+import { removeDuplicates } from "../utils/helpers";
 
 type SearchModalProps = {
   query: string;
@@ -36,6 +37,8 @@ function SearchModal({
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  const uniqueMangas = removeDuplicates(mangaList ?? []);
 
   return (
     <AnimatePresence>
@@ -77,8 +80,8 @@ function SearchModal({
               )}
               <ul className="mt-4 max-h-[60vh] w-full overflow-y-auto border-t border-white py-2">
                 {!isLoading ? (
-                  mangaList && mangaList.length > 0 ? (
-                    mangaList.map((manga: MangaData) => (
+                  uniqueMangas && uniqueMangas.length > 0 ? (
+                    uniqueMangas.map((manga: MangaData) => (
                       <li key={manga.mal_id}>
                         <Link
                           to={`/detail/${manga.mal_id}?title=${formatNameForUrl(manga.title)}`}
