@@ -69,3 +69,7 @@ Check out the live version here:
 ```bash
   https://manga-gen-v2.vercel.app
 ```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
