@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <>
-      <header className="z-20 h-20 bg-neutral-800 px-5 lg:px-20 2xl:px-40">
+      <header className="z-40 h-20 bg-neutral-800 px-5 lg:px-20 2xl:px-40">
         {isMobile ? (
           <NavBarMobile onSearchClick={setSearchOpen} />
         ) : (
